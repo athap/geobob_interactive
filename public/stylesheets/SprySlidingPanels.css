@@ -1,0 +1,9 @@
+/*Sliding Panels styling classes*/ 
+.SlidingPanels{position:absolute;width:100%;height:365px;padding:0px;border:none;top:120px;left:0px;}
+#panel_links{z-index:10;position:absolute;top:130px;width:100%;}
+.SlidingPanelsContentGroup{position:relative;width:100%;margin:0px;padding:0px;border:none;}
+.panel_links_centered{width:992px;margin-left:-496px;left:50%;position:absolute;}
+.SlidingPanelsContent{width:100%;height:365px;overflow:hidden;margin:0px;padding:0px;border:none;}
+.SlidingPanelsAnimating *{overflow:hidden !important;}
+.SlidingPanelsCurrentPanel{}
+.SlidingPanelsFocused{}

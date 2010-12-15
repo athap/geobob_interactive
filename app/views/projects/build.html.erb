@@ -1,0 +1,22 @@
+<%= render 'projects/project_nav', :number => 4 %>
+<div id="author_leftcolumn">
+  <h6> Step 1: What You're Missing</h6>
+  <p>Below is a list of things that need to be completed in order for your app 
+    to work correctly. You can still build it, but we don’t recommend it.
+  </p>
+  <form id="form2" name="form2" method="post" action="">
+    <textarea name="Title" cols="40" rows="10" id="Title"></textarea>
+  </form>
+  <!--END OF STEP 1-->
+  <br />
+  <h6> Step 2: Review App Design</h6>
+  <p>Click on the links above the phone to review your designs and icons</p>
+  <h6> Step 3: Build your App</h6>
+  <p>Click the “Build App” button to download the zip file.</p>
+  <br /><p><a href="<%= export_project_path(@project) %>"><img src="/images/author_imgs/next_button4.png" alt="Next" width="127" height="40" /></a></p>
+</div>
+<div id="author_rightcolumn">
+  <div align="center">
+    <h6><img src="/images/author_imgs/iphone.jpg" alt="Phone" width="338" height="625" /></h6>
+  </div>
+</div>

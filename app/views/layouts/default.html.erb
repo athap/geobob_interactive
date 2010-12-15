@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <%= render :partial => 'layouts/global/head' %>
+</head>
+<body>
+  <div id="container">
+   <div id="header_bg"></div>
+   <div id="flash_footer_bg<%=@dom_id_suffix%>"></div>
+    <div id="flash_bg<%=@dom_id_suffix%>">
+      <div id="flash_content" class="style3">
+        <% if @page_header_text -%>
+          <div class="page_header"><%= @page_header_text %></div>
+        <% else -%>
+          <img src="/images/flash_placeholder.jpg" />
+        <% end -%>
+      </div>
+    </div>
+    <div id="content_container">
+      <%= render :partial => 'layouts/global/header' %>
+      <div id="body">
+        <%= yield :layout %>
+      </div>
+      <div id="clearfooter"></div>
+    </div>
+    <%= render :partial => 'layouts/global/footer' %>
+  </div>
+  <%= yield :last_content %>
+  <script type="text/javascript" language="JavaScript">
+    <%= yield :javascript %>
+  </script>
+  <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+  <script type="text/javascript">
+    try {
+      var pageTracker = _gat._getTracker("<%=GlobalConfig.google_tracking_code%>");
+          pageTracker._setDomainName("<%=GlobalConfig.google_tracking_set_domain%>");
+          pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

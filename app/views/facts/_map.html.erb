@@ -1,0 +1,36 @@
+<div id="map_content" style="height:100%; width:100%;"></div>
+<div style="display:none;">
+  <div id="project">
+    <p>Facts (<span id="facts_count"><%=facts.length%></span>)</p>
+  </div>
+  <div id="new-fact">
+    <%= render :partial => 'facts/form', :locals => { :factable => factable, :new_fact => true } %>
+  </div>
+  <div id="new-fact-full">
+    <%= render :partial => 'facts/form', :locals => { :factable => factable, :new_fact => false } %>
+  </div>
+  <div id="facts">
+    <%= render :partial => 'facts/fact', :collection => facts %>
+  </div>
+  <a id="open_new_fact" href="#new-fact-full">New Fact</a>
+  <span id="waiting" class="waiting">Loading, please wait...</span>
+</div>
+
+<script type="text/javascript">
+var projectLatLng = new google.maps.LatLng(<%=factable.latlng%>);
+function setupMarkers(){
+  <% if facts.blank? -%>
+    return false;
+  <% else -%>
+    <% facts.each do |fact| -%>
+      markers['<%=fact.dom_id%>'] = setupMarker('<%=fact.id%>', '<%=fact.dom_id%>', '<%=escape_javascript(fact.title)%>', new google.maps.LatLng(<%=fact.latlng%>), '<%=fact.icon%>');
+    <% end -%>
+    return true;
+  <% end -%>
+}
+function setupTags(paletteControl){
+  <% tags.each do |tag| -%>
+  paletteControl.addTool('<%= tag.icon %>');
+  <% end -%>
+}
+</script>

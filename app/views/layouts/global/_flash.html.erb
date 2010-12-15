@@ -1,0 +1,9 @@
+<div id="flashExplanation" class="notify-box">
+  <% if flash.keys.any? {|key| !flash[key].blank? && flash[key].length > 0} -%>
+    <div id="flash-messages" class="message">
+      <% flash.each do |key, msg| -%>
+        <div id="notice_<%=key%>" class="message <%=key%>"><%= msg %></div>
+      <% end -%>
+    </div>
+  <% end -%>
+</div>

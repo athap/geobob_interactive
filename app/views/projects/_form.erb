@@ -1,0 +1,36 @@
+<%= semantic_form_for @project, :html => { :multipart => true } do |f| -%>
+	<%= output_errors('Please correct the following errors:', {:class => 'help-box'}, @project) %>
+
+  <div id="two" class="project-pane">
+    <div id="author_leftcolumn">
+      <h6> Step 1: App Name And Description</h6>
+      <p>Give your smart phone app a name and a brief description of what it does.</p>
+      <% f.inputs do %>
+        <%= f.input :name %>
+        <%= f.input :description %>
+      <% end -%>
+      <br />
+      <h6> Step 2: APP ICON</h6>
+      <p>Browse for an icon to display on your mobile device. </p>
+      <p>Please do not add rounded corners or a glossy overlay, they will be added automatically</p>
+      <%= f.file_field :app_icon, { :label => '<strong>App Icon: </strong>(RECOMMENDED: 57 X 57 px PNG at 72 dpi)' } %>
+      <%= image_tag @project.app_icon.url(:thumb) if @project.app_icon_file_name %>
+      <br />
+      <h6>Step 3: Splash Page</h6>
+      <%= f.file_field :splash_image, { :label => '<strong>Splash Page Image: </strong>(RECOMMENDED: 320 X 480 px JPG at 72 dpi)' } %>
+      <div class="submits clearfix form-row">
+        <div class="waiting" style="display:none;">Please Wait</div>
+        <%= image_submit_tag "/images/author_imgs/next_button2.png", { :title => "Add Project Content", :class => 'next-step' } %>
+      </div>
+      
+    </div>
+    <div id="author_rightcolumn">
+      <div id="content-iPhone">
+        <div id="app-icons-drop" class="connectedSortable" <%= app_splash(@project) %>></div>
+      </div>
+    </div>
+  </div>
+
+  <%= f.hidden_field :project_layout_id %>
+  
+<% end -%>

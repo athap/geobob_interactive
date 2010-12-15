@@ -1,0 +1,4 @@
+<%= render 'projects/project_nav', :number => 1 %>
+<%= semantic_form_for @project, :url => details_project_path(@project) do |f| -%>
+  <%= render 'projects/layout', :f => f %>
+<% end -%>

@@ -1,0 +1,36 @@
+development:
+  adapter: mysql
+  database: geepers_development
+  username: root
+  password:
+  host: localhost
+  encoding: utf8
+
+test: &TEST
+  adapter: mysql
+  database: geepers_test
+  username: root
+  password:
+  host: localhost
+  encoding: utf8
+
+staging:
+  adapter: mysql
+  database: geepers_staging
+  username: geepers
+  password: 
+  host: localhost
+  encoding: utf8
+  socket: /var/lib/mysql/mysql.sock
+
+production:
+  adapter: mysql
+  database: geepers_production
+  username: bob
+  password: djdu248!#$%dfgj^
+  host: localhost
+  encoding: utf8
+  #socket: /var/lib/mysql/mysql.sock
+
+cucumber:
+  <<: *TEST

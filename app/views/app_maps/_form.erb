@@ -1,0 +1,14 @@
+<%= semantic_form_for @app_map, :html => { :multipart => true, :class => 'ajax' } do |f| -%>
+  <div id="messages-container">
+    <%= output_errors('Please correct the following errors:', {:class => 'help-box'}, @app_map) %>
+  </div>
+  <% f.inputs do %>
+    <%= f.input :title -%>
+    <%= f.input :google_map_feed -%>
+  <% end -%>
+  <%= f.file_field :icon, { :label => 'Upload Icon' } %>
+  <div class="submits clearfix form-item">
+    <div class="waiting" style="display:none;">Please Wait</div>
+    <%= f.submit 'Save', :class => 'submit_wait submit_fact' %>
+  </div>
+<% end -%>

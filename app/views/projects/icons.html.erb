@@ -1,0 +1,25 @@
+<div class="text_field"> 
+  <h1>Select Icons for <%= h @project.name %></h1>
+  <p>
+    <%= link_to 'Project', @project %> | 
+    <%= link_to 'All Projects', projects_path %>
+  </p>
+  <%= output_message_container('messages', 'messages-container') %>
+  <div id="project-icons">
+    <h2>Icons for Project</h2>
+    <div id="select-icons-drop" class="connectedSortable">
+      <%= render :partial => 'tags/tag', :collection => @project_icons %>
+    </div>
+  </div>
+  <div id="available-icons">
+    <h2>Available Icons</h2>
+    <div id="select-icons-delete" class="connectedSortable">
+      <%= render :partial => 'tags/tag', :collection => @available_icons %>
+    </div>
+  </div>
+</div>
+<div style="display:none;">
+  <% form_for @project, :html => { :id => 'select-tag-form', :class => 'ajax' } do |f| -%>
+    <%= f.hidden_field :tag_list, :class => 'select-tag-list' -%>
+  <% end -%>
+</div>

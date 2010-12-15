@@ -1,0 +1,9 @@
+<div class="breadcrumb">
+  <img src="/images/author_imgs/arrow_<%=number%>.jpg" alt="Breadcrumb Nav" width="496" height="20" border="0" usemap="#Map2" />
+  <map name="Map2" id="Map2">
+    <area shape="rect" coords="378,3,495,18" href="<%= empty_project ? '#' : build_project_path(@project) %>" target="_self" alt="Build App" />
+    <area shape="rect" coords="266,3,365,16" href="<%= empty_project ? '#' : content_project_path(@project) %>" target="_self" alt="App Content" />
+    <area shape="rect" coords="142,4,244,17" href="<%= empty_project ? '#' : details_project_path(@project) %>" target="_self" alt="New App" />
+    <area shape="rect" coords="6,3,127,17" href="<%= empty_project ? new_project_path : edit_project_path(@project) %>" target="_self" alt="Choose Interface" />
+  </map>
+</div>

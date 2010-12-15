@@ -1,0 +1,61 @@
+<div id="body_leftcolumn">
+  <h1>CONTACT US</h1>
+  <div align="right">
+    <% form_tag('/contact', :id => "contact_form") do -%>
+
+      <div class="row clear">
+        <label for="form_name"><%= I18n.t('contact.name') %></label>
+        <input type="text" id="form_name" name="name" />
+      </div>
+
+      <div class="row clear">
+        <label for="form_phone"><%= I18n.t('contact.phone') %></label>
+        <input type="text" id="form_phone" name="phone" />
+      </div>
+
+      <div class="row clear">
+        <label for="form_email"><%= I18n.t('contact.email') %></label>
+        <input type="text" id="form_email" name="email" />
+      </div>
+
+      <div class="row clear">
+        <label for="form_message"><%= I18n.t('contact.subject') %></label>
+        <input type="text" id="form_email" name="email" />
+      </div>
+
+      <div class="row clear">
+        <label for="form_message"><%= I18n.t('contact.question') %></label>
+    		<textarea id="form_message" name="message"></textarea>
+      </div>
+
+      <input type="submit" value="<%= I18n.t('general.send') %>" class="button"/>
+
+      <div class="clear"></div>
+
+    <% end -%>
+  </div>
+</div> 
+<div id="body_rightcolumn">
+  <h1>ADDRESS:</h1>
+  <p>6530 Old Main Hill
+    <br />
+    Utah State University Logan, Utah
+    <br />
+    84322-2132
+  </p>
+  <h1>PHONE:</h1>
+  <p>(Please email for the time being)</p>
+  <div align="left">
+    <h1>LINKS:</h1>
+    <p><span class="style7"><span class="style11">IMRC</span> - </span><span class="style11">Interdisciplinary Media Research Consortium (IMRC)</span> <br />
+    <ul><li><a href="http://imrc.usu.edu" target="_blank" class="style5">http://imrc.usu.edu</a></p></li></ul>
+    <p><strong><span class="style8"><span class="style11">IDIAS</span> - </span></strong>
+    <span class="style11">Interactive Design for Instructional <br />Applications and</span>   <span class="style11">Simulations</span><strong>
+    <ul><li><a href="http://idias.usu.edu" target="_blank"> http://idias.usu.edu</a></li></ul> </strong></p>
+    <span class="style11"><strong>USTAR</strong></span>
+    <ul>
+      <li><a href="http://www.innovationutah.com/" target="_blank">http://www.innovationutah.com/</a></li>
+      <li><a href="http://ustar.usu.edu/" target="_blank"> http://ustar.usu.edu/</a></li>
+    </ul>
+  </div>
+</div>

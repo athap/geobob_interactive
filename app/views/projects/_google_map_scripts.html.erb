@@ -1,0 +1,25 @@
+<script type="text/javascript">
+var map;
+var markers = new Array();
+
+google.setOnLoadCallback(function() {
+  if (google.maps.BrowserIsCompatible()) {
+    map = new google.maps.Map2(document.getElementById("<%=content_id%>"));
+    map.setCenter(new google.maps.LatLng(<%=center_on.lat%>, <%=center_on.lng%>), 11);
+    map.addControl(new google.maps.LargeMapControl());
+    map.addControl(new google.maps.MapTypeControl());
+    
+    // Add listener to set location if the user clicks on the map
+    GEvent.addListener(map, "click", function(overlay,latlng) {
+      if (latlng) {
+        jQuery('#fact_location').val(latlng);
+      }
+    });
+    <% facts.each do |fact| -%>
+      markers['<%=fact.dom_id%>'] = setupMarker(new GLatLng(<%=fact.latlng%>), '<%=fact.dom_id%>', '<%= "#{fact.photo(:tiny)}" %>');
+      map.addOverlay(markers['<%=fact.dom_id%>']);
+    <% end -%>
+  }
+});
+jQuery(window).unload( function () { GUnload(); } );
+</script>

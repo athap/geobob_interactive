@@ -1,0 +1,12 @@
+<% 
+html = output_errors(title, options, fields)
+return if html.blank?
+html = escape_javascript(html)
+if decode_html
+  html = "decodeHtml('#{html}')"
+else
+  html = "'#{html}'"
+end
+-%>
+jQuery('#<%=dom_id%>').html(<%=html%>);
+jQuery('#<%=dom_id%>').show();

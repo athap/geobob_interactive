@@ -1,0 +1,55 @@
+<div id="app_map" style="width:1100px;height:800px;">
+  <ul>
+		<li><a href="#map">Map</a></li>
+		<li><a href="#settings">Settings</a></li>
+		<li><a href="#categories">Categories</a></li>
+	</ul>
+	<div id="map">
+	  <%= render 'facts/map', :facts => @app_map.facts, :factable => @app_map, :tags => @app_map.tags %>
+  </div>
+  <div id="settings">
+    <div>
+      <%= render 'app_maps/form' %>
+    </div>
+    <div class="cl"></div>
+    <% if !@app_map.read_google_map.blank? -%>
+      <div>
+        <%= semantic_form_for @app_map do |f| -%>
+          <%= hidden_field_tag :read_google_map, true %>
+          <%= f.submit 'Reload Pins From Google Map Feed', :class => 'wait-button' %>
+          <div class="waiting">Parsing Google feed.  Please wait.</div>
+        <% end -%>
+      </div>
+    <% end -%>
+  </div>
+  <div id="categories">
+    <%= output_message_container('messages', 'messages-container') %>
+    <div id="map-icons">
+      <h2>Selected Icons</h2>
+      <div id="select-icons-drop" class="connectedSortable">
+        <%= render :partial => 'tags/tag', :collection => @map_icons %>
+      </div>
+    </div>
+    <div id="available-icons">
+      <h2>Available Icons</h2>
+      <div id="select-icons-delete" class="connectedSortable">
+        <%= render :partial => 'tags/tag', :collection => @available_icons %>
+      </div>
+    </div>
+  </div>
+  <div style="display:none;">
+    <% form_for @app_map, :html => { :id => 'select-tag-form', :class => 'ajax' } do |f| -%>
+      <%= f.hidden_field :tag_list, :class => 'select-tag-list' -%>
+    <% end -%>
+  </div>
+</div>
+
+
+<script type="text/javascript" language="JavaScript">
+  jQuery(document).ready(function() {
+    apply_ajax_forms();
+    jQuery("#app_map").tabs();
+    apply_icon_dnd();
+    init_map();
+  });
+</script>

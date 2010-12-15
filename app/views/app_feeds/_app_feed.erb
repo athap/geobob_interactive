@@ -1,0 +1,5 @@
+<div id="<%=app_item.dom_id%>" class="icon">
+  <a class="delete ajax-delete" href="<%= app_feed_path(app_item) %>"><img src="/images/fancybox/fancy_closebox.png" /></a>
+  <a class="fancy_app_edit" href="<%= edit_app_feed_path(app_item) %>"><%= image_tag(app_item.icon.url(:phone), :class => 'rss') %></a>
+  <caption><%= app_item.title %></caption>
+</div>

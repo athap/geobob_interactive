@@ -1,0 +1,95 @@
+default: &DEFAULT
+  #
+  # Replace geobob.com in this file with your website's domain name
+  #
+
+  # Global application values.  These are used to display the app name, send emails, and configure where system emails go.
+  application_name: 'GeoBob'         # Common name for your application.  i.e. My App, Billy Bob, etc
+  from_email: 'maryann.parlin@gmail.com'    # Emails will come from this address i.e. noreply@geobob.com, support@geobob.com, system@geobob.com, etc
+  from_email_name: 'Geobob'            # This will show up as the name on emails.  i.e. support@geobob.com <Example>
+  support_email: 'maryann.parlin@gmail.com' # Support email for your application.  This is used for contact us etc.
+  admin_email: 'maryann.parlin@gmail.com'     # Admin email for your application
+
+  # Email charset.  No need to change this unless you have a good reason to change the encoding.
+  mail_charset: 'utf-8'
+
+  # Email server configuration
+  # Sendgrid is easy: https://sendgrid.com/user/signup
+  email_server_address: "smtp.sendgrid.net"     # Email server address.  This works for sendgrid
+  email_user_name: 'geobob@usu.edu'  # Email server username
+  email_password: 'engine005'               # Email server password
+  base_domain: 'geobob.usu.edu'                 # Basedomain that emails will come from
+
+  # Google ajax api key is optional but recommended by google.  Get one here: http://code.google.com/apis/ajaxsearch/signup.html
+  google_ajax_api_key: 'ABQIAAAA7PfG3hsKezJ6slLGywsILRQaNZrEEDRIBVBd1VkQ8sT7SNDLaRQe1aFjcNxFLAP81wDPt61TT_oEDQ'
+  request_referer: 'www.geobob.com'
+  show_google_search: true        # Determines whether or not a google search is displayed on the topic page
+  load_feeds_on_server: false     # Determines whether feeds on a topic page are loaded on the server or the client.  Loading on the server can take a while
+  combine_feeds_on_server: false  # Combines feeds loaded on the server
+
+  # ssl
+  enable_ssl: false # Enable ssl if you have an ssl certificate installed.  This will provide security between the client and server.
+
+  # keys
+  hoptoad_key: 'f7d045e86bf42d3d25f30f09521fbe63' # Get a hoptoad key - https://hoptoadapp.com/account/new
+
+  # Google Analtyics Configuration.  This will enable Google Analytics on your site and will be used if your template includes:
+  #                                  <%= render :partial => 'layouts/global/google_analytics' %>
+  google_tracking_code: "UA-16862183-1"     # Get a tracking code here: http://www.google.com/analytics/. The codes look like this: 'UA-9685000-0'
+  google_tracking_set_domain: "geobob.com"   # Base domain provided to Google Analytics. Useful if you are using subdomains but want all traffic 
+                                              # recorded into one account.
+
+  # Geo Kit Configuration
+  #google_geo_key: 'ABQIAAAA7PfG3hsKezJ6slLGywsILRTget1rbwn17iEs2m0cvaG6XWvQfxS3Vwresf8QastMRWrJMP4kFpjmlw'
+  # TODO make sure the google_ajax_api_key from above can be used with geokit.  If it can then refactor and remove google_geo_key
+  # in favor of just using a single key.
+  # Get google key from http://www.google.com/apis/maps/signup.html
+  google_geo_key: 'ABQIAAAA7PfG3hsKezJ6slLGywsILRQaNZrEEDRIBVBd1VkQ8sT7SNDLaRQe1aFjcNxFLAP81wDPt61TT_oEDQ'
+  
+  # Get yahoo key from http://developer.yahoo.com/maps/rest/V1/geocode.html
+  yahoo_geo_key: 'GooreMDV34EbpbHU0CEzWQ.w9RO0fzj_a5WXC1ivotCAlFi1uJHivF6OYZY.NudZ'
+
+  # Oauth Configuration
+  # Oauth permits access to a user's account on remote servers.  For example, instead of asking for a user's Twitter username and password
+  # the system can obtain access via Oauth and then make posts on behave of the user.
+  twitter_oauth_key: ''     # Get twitter credentials here: http://twitter.com/apps
+  twitter_oauth_secret: ''
+
+  content_css: ['/stylesheets/reset.css', '/stylesheets/styles.css'] # CSS files that should be fed into the tiny_mce content editor.  
+                                      # Note that Rails will typically generate a single all.css stylesheet.  Setting the stylesheets here let's 
+                                      # the site administrator control which css is present in the content editor and thus which css an end 
+                                      # user has access to to style their content.
+
+#
+# Provide settings specific to each environment below.  For example, in production application_url will be a real domain name
+# while in development application_url will typically be something like 'localhost:3000'
+#
+production:
+  <<: *DEFAULT
+  content_css: ['/stylesheets/all.css']
+  # Sent in emails to users
+  application_url: 'geobob.usu.edu'
+
+staging:
+  <<: *DEFAULT
+
+  # Sent in emails to users
+  application_url: 'staging.geobob.com'
+
+development:
+  <<: *DEFAULT
+
+  application_url: 'localhost:3000'
+
+test:
+  <<: *DEFAULT
+
+  # controls account activation and automatic login
+  automatically_activate: false
+  automatically_login_after_account_create: false
+
+  # turn off for testing
+  use_recaptcha: false
+
+  application_url: 'localhost:3000'
+

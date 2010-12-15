@@ -1,0 +1,21 @@
+<div id="header">
+  <div id="left_logo">
+    <a href="/"><img src="/images/logo.jpg" alt="GeoBob Logo" width="333" height="113" /></a>
+  </div>
+  <div id="right_login">
+    <%= render :partial => 'layouts/global/login_controls' %>
+    <div id="nav">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="21%"><div align="right"><h2 class="style1"><a href="/">HOME</a></h2></div></td>
+          <td width="27%"><div align="right"><h2><a href="/demos">EXAMPLE</a></h2></div></td>
+          <td width="27%"><div align="right"><h2><a href="/about">ABOUT US</a></h2></div></td>
+          <td width="25%"><div align="right"><h2><a href="/contact">CONTACT</a></h2></div></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<p></p>
+<div id="flash_blank<%=@dom_id_suffix%>"></div>
+<%= render 'layouts/global/flash', :flash => flash %>

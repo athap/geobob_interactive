@@ -1,0 +1,23 @@
+<div class="text_field"> 
+  <h1>Configure <%= h @project.name %></h1>
+  <p><%= link_to 'All Projects', projects_path %></p>
+  <%= output_message_container('messages', 'messages-container') %>
+  <div id="project-icons">
+    <h2>Current Project Configuration</h2>
+    <div id="select-icons-drop">
+      
+      
+    </div>
+  </div>
+  <div id="available-icons">
+    <h2>Available Options</h2>
+    <div id="select-icons-delete">
+      
+    </div>
+  </div>
+</div>
+<div style="display:none;">
+  <% form_for @project, :html => { :id => 'select-tag-form', :class => 'ajax' } do |f| -%>
+    <%= f.hidden_field :tag_list -%>
+  <% end -%>
+</div>

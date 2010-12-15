@@ -1,0 +1,6 @@
+<div <%=css_class%> id="errorExplanation">
+  <% if !title.blank? -%>
+    <h2><%= title %></h2>
+  <% end -%>
+  <%= field_errors %>
+</div>

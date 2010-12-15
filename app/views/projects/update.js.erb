@@ -1,0 +1,7 @@
+<% if params[:update_app_icons_drop] -%>
+	jQuery('#app-icons-drop').attr("style", "<%= app_background(@project, false) %>");
+<% elsif !@errors.blank? -%>
+	jQuery('#message').html('<%= @errors %>');
+<% end -%>
+jQuery('.waiting').hide();
+jQuery('.submit_wait').show();

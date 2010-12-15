@@ -1,0 +1,23 @@
+<div id="one" class="project-pane">
+  <table width="100%" border="1" cellspacing="0"  cellpadding="10">
+    <tr>
+      <th cope="col">1. List View Layout</th>
+      <th scope="col">2. Icon Grid Layout</th>
+      <th scope="col">3. Cover Flow Layout</th>
+    </tr>
+    <tr>
+      <td align="center"><img src="/images/author_imgs/layout_list.jpg" alt="List Layout" width="223" height="319" /></td>
+      <td align="center"><img src="/images/author_imgs/layout_icon.jpg" alt="Icon Layout" width="222" height="333" /></td>
+      <td align="center"><img src="/images/author_imgs/layout_coverflow.jpg" alt="Cover Flow Layout" width="395" height="230" /></td>
+    </tr>
+  </table>
+  <h1>Select Your Phone Layout</h1>
+  <% f.inputs do %>  
+    <%= f.input :project_layout_id, :as => :select, :collection => ProjectLayout.by_sort %>
+  <% end -%>
+  <br />
+  <div class="submits clearfix form-row">
+    <div class="waiting" style="display:none;">Please Wait</div>
+    <%= image_submit_tag "/images/author_imgs/next_button1.png", { :title => "Add Project Details", :class => 'next-step' } %>
+  </div>
+</div>

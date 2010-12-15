@@ -1,0 +1,7 @@
+<% if @success -%>
+	jQuery('#<%=@app_map.dom_id%>').replaceWith(decodeHtml('<%= escape_javascript(render('app_maps/app_map', :app_item => @app_map)) %>'));
+	//jQuery.fancybox.close();
+	apply_content_fancybox();
+<% else -%>
+	<%= output_errors_ajax('messages-container', 'Please correct the following errors:', {:class => 'help-box'}, @app_map, true) %>
+<% end -%>

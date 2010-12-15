@@ -1,0 +1,81 @@
+<div id="body_leftcolumn">
+  <div>
+    <div>
+      <h1>What is GeoBob?</h1>
+      GeoBob is a development platform that enables the design and development of location-based applications on Android and iPhones for a wide variety of uses.
+      <p><br /></p>
+      <h1>History of GeoBob</h1>
+      The GeoBob project extends the  successful design, development, and implementation of an educational mobile-game.
+      <p><br />A group of graduate students at USU created a location-based educational game for hand-held GPS devices to teach visitors about the American West Heritage Center.</p>
+      <p></p>
+      <h1>Research</h1>
+      <ul>
+        <li>What are the uses of handheld  devices for learning?</li>
+        <li>What type of applications do others  build using this platform?</li>
+        <li>What types of games can be built?</li>
+        <li>How  do people use the GPS on their phones?</li>
+      </ul>
+      <p>&nbsp;</p>
+      <h1><img align="left" hspace="10px" src="/images/app_maps.jpg" alt="App Maps" width="100" height="100" /> MAPS</h1>
+      <p>Using our map feature allows you to effectively use your GPS functionality. You can mark your favorite locations, create a road trip plan, or even create a treasure hunt for fun.</p>
+      <h1><img align="left" hspace="10" src="/images/app_links.jpg" alt="App Links" width="100" height="100" />LINKS</h1>
+      <p>The use of links allows your app to connect to your favorite sites without having to leave the app.</p>
+    </div>
+  </div>
+</div> 
+<div id="body_rightcolumn">
+  <h1>Technology</h1>
+  GeoBob has a web-based user interface to input content for each application. No programming experience is  required. Currently, users can add “fun” facts about a location.
+  <p><br />After the data is submitted from  the website, a file is created and sent to third-party software called Titanium. This is used to create the application for the Android phone or iPhone.</p>
+  <p><br />The applications can be used for  both iPhones and Android phones. The applications will use content in the form  of text, images, audio, and video.</p>
+  <p><br /></p>
+  <h1>Objectives and Aims</h1>
+  The objective is to create a platform that allows the easy creation of location-based applications for iPhone and android smart phones.
+  <p><br />The aim is to produce multiple  educational and non-educational applications.</p>
+  <p>&nbsp;</p>
+  <img align="left" hspace="10px"src="/images/app_RSS.jpg" alt="App RSS" width="100" height="100" />
+  <h1>RSS</h1>
+  <div id="body_leftcolumn2">
+    <div>
+      <div>
+        <p>Want people to keep updated on your business? The RSS feed functionality allows you to do just that. Your customers or friends can keep tabs on new changes being made.</p>
+        <h1><img align="left" hspace="10" src="/images/app_photos.jpg" alt="App Photos" width="100" height="100" />PHOTOS</h1>
+        <p>A picture is worth a thousand words. So, let your app speak for you. GeoBob allows you to upload pictures to share with everyone.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for :last_content do -%>
+  <div id="panel_links">
+  <div class="panel_links_centered">
+    <div align="right">
+      <a href="#" onclick="sp1.showPanel(0); return false;"><img src="/images/panel_dot.png" alt="Panel 1" /></a>
+      <a href="#" onclick="sp1.showPanel(1); return false;"><img src="/images/panel_dot.png" alt="Panel 2" /></a>
+      <a href="#" onclick="sp1.showPanel(2); return false;"><img src="/images/panel_dot.png" alt="Panel 3" /></a>
+      <a href="#" onclick="sp1.showPanel(3); return false;"><img src="/images/panel_dot.png" alt="Panel 4" /></a>  
+    </div>
+  </div>
+  </div>
+  <div id="SlidingPanels1" class="SlidingPanels">
+  	<div class="SlidingPanelsContentGroup">
+  		<div id="p1" class="SlidingPanelsContent">
+  			<div class="panel_links_centered"><a href="http://geobob.usu.edu"><img src="/images/flash_placeholder1.jpg" /></a></div>
+  		</div>
+  		<div id="p2" class="SlidingPanelsContent">
+  			<div class="panel_links_centered"><a href="http://geobob.usu.edu"><img src="/images/flash_placeholder2.jpg" /></a></div>
+  		</div>
+  		<div id="p3" class="SlidingPanelsContent">
+        <div class="panel_links_centered"><a href="http://geobob.usu.edu"><img src="/images/flash_placeholder3.jpg" /></a></div>
+  	  </div>
+  	  <div id="p4" class="SlidingPanelsContent">
+  			<div class="panel_links_centered"><img src="/images/flash_placeholder4.jpg" /></div>
+  		</div>
+  	</div>
+  </div>
+  <script type="text/javascript">
+  var sp1 = new Spry.Widget.SlidingPanels("SlidingPanels1");
+  </script>
+<% end -%>
+
+

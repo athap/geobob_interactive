@@ -1,0 +1,22 @@
+<div id="<%=fact.dom_id%>" class="fact-container">
+  <h3 class="fact-title"><%= fact.title %></h3>
+  <% if fact.photo_file_name -%>
+    <%= image_tag(fact.photo.url(:thumb), :class => 'thumb') %>
+  <% end -%>
+  <div class="fact-content">
+    <%= fact.content %>
+  </div>
+  <div class="fact-admin" style="margin:3px;">
+    <div class="fact-tags">Category:
+      <% if fact.tags.blank? -%>
+        None
+      <% else -%>
+        <% fact.tags.each do |tag| -%>
+          <img src="<%= tag.icon %>" alt="<%= tag.name %>" /><%= tag.name %>
+        <% end -%>
+      <% end -%>
+    </div>
+    <%= link_to 'Edit', edit_fact_url(fact, :format => 'js'), :class => 'inline-edit', :id => "edit_#{fact.dom_id}", :style => 'color:#333;' %>
+    <%= link_to 'Delete', fact_url(fact), :class => 'ajax-delete', :style => 'color:#333;' %>
+  </div>
+</div>
