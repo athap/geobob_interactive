@@ -10,7 +10,7 @@ gem "jammit"
 gem "friendly_id", "~> 3.1"
 gem "will_paginate", "~> 3.0.pre2"
 gem 'acts-as-taggable-on', '2.0.6'
-gem 'uploader', '0.2.7'
+gem 'uploader'
 gem "overlord"
 gem 'formtastic', '>= 1.1.0'
 gem 'paperclip', '>=2.3.5'
@@ -19,8 +19,6 @@ gem "aasm", '2.1.5'
 gem 'geokit', '1.5.0'
 gem 'rubyzip', '0.9.4'
 gem 'tiny_mce', '0.1.3'
-
-
 
 if RUBY_VERSION < '1.9'
   gem "ruby-debug"

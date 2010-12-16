@@ -36,6 +36,10 @@ GEM
       ZenTest (>= 4.4.1)
     autotest-rails (4.1.0)
       ZenTest
+    aws-s3 (0.6.2)
+      builder
+      mime-types
+      xml-simple
     babosa (0.2.0)
     bcrypt-ruby (2.1.2)
     builder (2.1.2)
@@ -115,7 +119,7 @@ GEM
     overlord (3.0.2)
       httparty
       json
-    paperclip (2.3.7)
+    paperclip (2.3.8)
       activerecord
       activesupport
     pickle (0.4.4)
@@ -179,13 +183,15 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.23)
-    uploader (0.2.7)
+    uploader (3.0.2)
+      aws-s3
       mime-types
       paperclip
       rack
     warden (1.0.3)
       rack (>= 1.0.0)
     will_paginate (3.0.pre2)
+    xml-simple (1.0.12)
     xpath (0.1.2)
       nokogiri (~> 1.3)
     yard (0.6.3)
@@ -229,5 +235,5 @@ DEPENDENCIES
   spork
   timecop
   tiny_mce (= 0.1.3)
-  uploader (= 0.2.7)
+  uploader
   will_paginate (~> 3.0.pre2)
