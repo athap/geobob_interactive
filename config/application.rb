@@ -10,7 +10,7 @@ require 'ostruct'
 require 'yaml'
 ::GlobalConfig = OpenStruct.new(YAML.load_file(File.expand_path('../global_config.yml', __FILE__))[Rails.env])
 
-module Geepers
+module Geobob
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

@@ -1,4 +1,4 @@
-Geepers::Application.routes.draw do
+Geobob::Application.routes.draw do
   
   root :to => 'default#index'
   

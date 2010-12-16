@@ -56,7 +56,8 @@ end
 project_layouts = ([
     { :name => '1. List View Layout', :sort => 1 }, 
     { :name => '2. Icon Grid Layout', :sort => 2 },
-    { :name => '3. Cover Flow Layout', :sort => 3 }
+    { :name => '3. Cover Flow Layout', :sort => 3 },
+    { :name => '4. GPSrs', :sort => 4 }
   ])
   
 project_layouts.each do |layout|

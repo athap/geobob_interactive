@@ -12,11 +12,18 @@ class User < ActiveRecord::Base
   
   default_scope :conditions => { :deleted_at => nil }
 
+  def any_role?(*roles)
+    roles.any?{|role| role?(role)}
+  end
   
   def role?(role)
     return !!self.roles.find_by_name( Role.sanitize role )
   end
 
+  def admin?
+    self.role?('Admin')
+  end
+  
   def destroy
     self.update_attribute(:deleted_at, Time.now.utc)
   end

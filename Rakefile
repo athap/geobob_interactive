@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-Geepers::Application.load_tasks
+Geobob::Application.load_tasks

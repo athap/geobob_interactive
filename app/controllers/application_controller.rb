@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   # called by Admin::Muck::BaseController to check whether or not the
   # user should have access to the admin UI
   def admin_access?
-    access_denied unless admin?
+    access_denied unless current_user.admin?
   end
 
   def setup_paging
