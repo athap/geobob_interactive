@@ -9,7 +9,7 @@
     <%= f.file_field :background_image, { :label => '<strong>App Background: </strong>(RECOMMENDED: 320 X 480 px JPG at 160 dpi)' } %>
     <div class="submits clearfix form-item">
       <div class="waiting" style="display:none;">Please Wait</div>
-      <%= f.submit 'Upload', :class => 'submit_wait' %>
+      <%= f.submit 'Upload', :input_html => { :class => 'submit_wait' } %>
       <%= hidden_field_tag :update_app_icons_drop, true %>
     </div>
   <% end -%>
@@ -28,8 +28,8 @@
           <%= f.input :title, :label => 'Title' -%>
           <%= f.input :content, :as => 'text' %>
           <%= f.input :photo, :label => 'Upload Photo', :as => 'file' %>
-          <%= f.input :vertical_offset, :class => 'number' %>
-          <%= f.input :horizontal_offset, :class => 'number' %>
+          <%= f.input :vertical_offset, :input_html => { :class => 'number' } %>
+          <%= f.input :horizontal_offset, :input_html => { :class => 'number' } %>
         <% end -%>
         <%= hidden_field_tag :factable_id, @project.id %>
         <%= hidden_field_tag :factable_type, @project.type %>

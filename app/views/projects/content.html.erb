@@ -1,2 +1,4 @@
 <%= render 'projects/project_nav', :number => 3 %>
-<%= render "projects/content/#{@project.project_layout.view}" %>
+<div id="project-content">
+  <%= render "projects/content/#{@project.project_layout.view}" %>
+</div>
