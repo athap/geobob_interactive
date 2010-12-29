@@ -35,6 +35,11 @@ module ApplicationHelper
                                                                   :decode_html => decode_html }
   end
       
+  def output_message_container(message_id = 'message_id', message_container_id = 'errorExplanation', css_class = 'notify-box')
+    render :partial => 'shared/message_container', :locals => { :message_id => message_id, 
+                                                                :message_container_id => message_container_id, 
+                                                                :css_class => css_class }
+  end
   
 end
 

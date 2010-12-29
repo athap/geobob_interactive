@@ -19,14 +19,11 @@ Geobob::Application.routes.draw do
   
   resources :facts
   resources :projects do
-    collection do
-      get :details
-      post :details
-    end
     member do
       get :export
       get :details
       post :details
+      put :details
       get :content
       get :build
     end

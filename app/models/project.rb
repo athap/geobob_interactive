@@ -76,9 +76,9 @@ class Project < ActiveRecord::Base
     transitions :to => :finished, :from => [:new]
   end
     
-  named_scope :by_name, :order => "name ASC"
-  named_scope :recent, lambda { { :conditions => ['created_at > ?', 1.week.ago] } }
-  named_scope :newest, :order => "created_at DESC"
+  scope :by_name, :order => "name ASC"
+  scope :recent, lambda { { :conditions => ['created_at > ?', 1.week.ago] } }
+  scope :newest, :order => "created_at DESC"
   
   before_save :sanitize_attributes
 
