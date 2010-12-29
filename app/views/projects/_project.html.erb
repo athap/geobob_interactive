@@ -5,6 +5,6 @@
   <p><%#= link_to 'Map',  map_project_path(project) %></p>
   <p><%#= link_to 'Icons', icons_project_path(project) %></p>
   <p><%= link_to 'Export', export_project_path(project) %></p>
-  <p><%= project.description %></p>
+  <p><%= project.description.html_safe %></p>
   <p><%= link_to 'Delete', @project, :confirm => 'Are you sure?', :method => :delete if @project.can_edit?(current_user) %></p>
 </div>

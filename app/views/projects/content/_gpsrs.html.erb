@@ -1,0 +1,63 @@
+<div id="author_leftcolumn">
+  <h6>Step 1: Upload Background</h6>
+  <p>Click ‘browse’ to upload a personal picture then drag your background to the phone.</p>
+
+  <%= semantic_form_for @project, :html => { :multipart => true, :class => 'ajax' } do |f| -%>
+    <div id="messages-container">
+      <%= output_errors('Please correct the following errors:', {:class => 'help-box'}, @project) %>
+    </div>
+    <%= f.file_field :background_image, { :label => '<strong>App Background: </strong>(RECOMMENDED: 320 X 480 px JPG at 160 dpi)' } %>
+    <div class="submits clearfix form-item">
+      <div class="waiting" style="display:none;">Please Wait</div>
+      <%= f.submit 'Upload', :class => 'submit_wait' %>
+      <%= hidden_field_tag :update_app_icons_drop, true %>
+    </div>
+  <% end -%>
+  
+  <div class="cl"></div>
+  <br />
+  <h6> Step 2: Add Points</h6>
+  <p>Add points to the map to identify the course your students will take.</p>
+  <div id="gps-points">
+    <div id="new-fact">
+      <%= semantic_form_for :fact, :html => { :multipart => true, :class => 'ajax' } do |f| -%>
+        <div id="messages-container">
+          <%= output_errors('Please correct the following errors:', {:class => 'help-box'}, @fact) %>
+        </div>
+        <% f.inputs do %>
+          <%= f.input :title, :label => 'Title' -%>
+          <%= f.input :content, :as => 'text' %>
+          <%= f.input :photo, :label => 'Upload Photo', :as => 'file' %>
+          <%= f.input :vertical_offset, :class => 'number' %>
+          <%= f.input :horizontal_offset, :class => 'number' %>
+        <% end -%>
+        <%= hidden_field_tag :factable_id, @project.id %>
+        <%= hidden_field_tag :factable_type, @project.type %>
+        <div class="submits clearfix form-item">
+          <div class="waiting" style="display:none;">Please Wait</div>
+          <%= f.submit 'Save', :class => 'submit_wait submit_fact' %>
+        </div>
+      <% end -%>
+    </div>  
+  </div>
+  <br />
+  <p><a href="<%= build_project_path %>"><img width="182" height="40" alt="Next" src="/images/author_imgs/next_button3.png"></a></p>
+</div>
+<div id="author_rightcolumn">
+  <div id="content-iPhone">
+    <div id="app-icons-drop" <%= app_background(@project) %>>
+      <%= render :partial => 'facts/fact', :collection => @project.facts %>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript" language="JavaScript">
+  jQuery(document).ready(function() {
+    apply_ajax_forms();
+  });
+</script>
+
+
+<% content_for :head do -%>
+<% end -%>

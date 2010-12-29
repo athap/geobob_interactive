@@ -16,6 +16,7 @@ module ApplicationHelper
   end
   
   def output_errors(title, options = {}, fields = nil)
+    return if fields.blank?
     fields = [fields] unless fields.is_a?(Array)
     field_errors = render(:partial => 'shared/field_error', :collection => fields)
     css_class = "class=\"#{options[:class] || 'error'}\"" unless options[:class].nil?

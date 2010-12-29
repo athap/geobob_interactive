@@ -1,0 +1,138 @@
+<div id="author_leftcolumn">
+  <h6>Step 1: Upload Background</h6>
+  <p>Click ‘browse’ to upload a personal picture then drag your background to the phone.</p>
+
+  <%= semantic_form_for @project, :html => { :multipart => true, :class => 'ajax' } do |f| -%>
+    <div id="messages-container">
+      <%= output_errors('Please correct the following errors:', {:class => 'help-box'}, @project) %>
+    </div>
+    <%= f.file_field :background_image, { :label => '<strong>App Background: </strong>(RECOMMENDED: 320 X 480 px JPG at 160 dpi)' } %>
+    <div class="submits clearfix form-item">
+      <div class="waiting" style="display:none;">Please Wait</div>
+      <%= f.submit 'Upload', :class => 'submit_wait' %>
+      <%= hidden_field_tag :update_app_icons_drop, true %>
+    </div>
+  <% end -%>
+  
+  <div class="cl"></div>
+  <br />
+  <h6> Step 2: Choose and Configure your icons</h6>
+  <p>Grab which icon best describes the functionality you would like to use and drag them onto the phone. After dropping the icon, you will be prompted to edit the icon’s content and details.</p>
+  <h2>**DRAG ICONS ONTO PHONE**</h2>
+  <div id="app-icons" class="connectedSortable">
+    <div class="icon">
+      <img src="/images/author_imgs/icon_RSS.png" alt="icon_RSS" width="57" height="57" class="rss" />
+      <caption>RSS</caption>
+    </div>
+    <div class="icon">
+      <img src="/images/author_imgs/icon_links.png" alt="icon_links" width="58" height="57" class="link" />
+      <caption>Link</caption>
+    </div>
+    <div class="icon">
+      <img src="/images/author_imgs/icon_maps.png" alt="icon_maps" width="67" height="57" class="map" />
+      <caption>Map</caption>
+    </div>
+    <div class="icon" style="display:none;">
+      <img src="/images/author_imgs/icon_photos.png" alt="icon_photo" width="71" height="51" class="photo" />
+      <caption>Photo Gallery</caption>
+    </div>
+  </div>
+  <br />
+  <p><a href="<%= build_project_path %>"><img width="182" height="40" alt="Next" src="/images/author_imgs/next_button3.png"></a></p>
+</div>
+<div id="author_rightcolumn">
+  <div id="content-iPhone">
+    <div id="app-icons-drop" class="connectedSortable" <%= app_background(@project) %>>
+      <% output_icons(@icons) %>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+var icon_id = 0;
+var $drop;
+
+jQuery(document).ready(function() {
+  
+  $drop = jQuery('#app-icons-drop');
+
+	jQuery("#app-icons-drop .icon").live('mouseover mouseout',
+		function(event) {
+		  if (event.type == 'mouseover') {
+        jQuery(this).find('.delete').show();
+      } else {
+        jQuery(this).find('.delete').hide();
+      }
+    }
+	);
+
+	jQuery("#app-icons .icon").draggable({
+		appendTo: "body",
+		helper: "clone",
+		zIndex: 1000000
+	});
+	
+	$drop.droppable({
+	  accept: "#app-icons .icon",
+	  drop: function(event, ui) {
+			add_icon(ui.draggable);
+		}
+  }).sortable({
+    connectWith: '.connectedSortable',
+		sort: function() {
+		},
+		update: function(event, ui) {
+      var order = jQuery(this).sortable('toArray').toString();
+      // TODO Submit new icon ordering to the server. This will probably go to the app_map object. Which means the app_map will need a way to hold it.
+    }
+	}).disableSelection();
+  
+  apply_content_fancybox();
+  
+});
+
+function get_order() {
+  //return jQuery('#app-icons-drop').sortable('toArray').toString();
+  return jQuery('#app-icons-drop').sortable('serialize');
+}
+
+function add_icon($item) {
+  var $new_item = $item.clone().appendTo($drop).show();
+  var type = $item.children('img').attr('class');
+  var new_data = { 'type': type };
+  var url = '';
+  icon_id += 1;
+  $new_item.attr("id", "icon_" + icon_id);
+  var data = { '_method': 'post', 'format': 'js', 'item_id': $new_item.attr("id") };
+  switch (type) {
+    case 'link':  
+      url = '/app_links/';
+      data['app_link[project_id]'] = <%= @project.id %>;
+      data['app_link[title]'] = 'Link';
+      data['app_link[url]'] = 'http://www.example.com';
+      break;
+    case 'rss':
+      url = '/app_feeds/';
+      data['app_feed[project_id]'] = <%= @project.id %>;
+      data['app_feed[title]'] = 'RSS';
+      data['app_feed[url]'] = 'http://www.example.com/rss';
+      break;
+    case 'map':
+      url = '/app_maps/';
+      data['app_map[project_id]'] = <%= @project.id %>;
+      break;
+  }
+  jQuery.post(url, data);
+}
+
+function apply_content_fancybox(){
+  jQuery('.fancy_app_edit').fancybox({ 'overlayShow' : false, 'hideOnOverlayClick' : false, 'hideOnContentClick' : false }); 
+}
+
+</script>
+
+<% content_for :head do -%>
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+  <%= javascript_include_tag 'map.js' %>
+<% end -%>

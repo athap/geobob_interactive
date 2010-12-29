@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101114010947) do
+ActiveRecord::Schema.define(:version => 20101222211028) do
 
   create_table "access_code_requests", :force => true do |t|
     t.string   "email"
@@ -90,6 +90,8 @@ ActiveRecord::Schema.define(:version => 20101114010947) do
     t.string   "subtitle",                                                         :default => ""
     t.integer  "factable_id",                                                      :default => 0
     t.string   "factable_type",      :limit => 15,                                 :default => ""
+    t.integer  "vertical_offset"
+    t.integer  "horizontal_offset"
   end
 
   add_index "facts", ["lat", "lng"], :name => "index_facts_on_lat_and_lng"
@@ -99,6 +101,7 @@ ActiveRecord::Schema.define(:version => 20101114010947) do
     t.integer  "sort"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "view"
   end
 
   create_table "project_roles", :force => true do |t|

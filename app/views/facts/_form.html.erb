@@ -10,18 +10,6 @@ mce_id = "#{prefix}_mce_content"
 <%= semantic_form_for :fact, :html => { :multipart => true, :id => form_id, :class => 'ajax' } do |f| -%>
   <div id="messages-container">
     <%= output_errors('Please correct the following errors:', {:class => 'help-box'}, @fact) %>
-    
-    <% if @authentication.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@authentication.errors.count, "error") %> prohibited this authentication from being saved:</h2>
-        <ul>
-        <% @authentication.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
-
   </div>
   <% f.inputs do %>
     <%= f.input :title, :label => 'Title' -%>
@@ -32,7 +20,7 @@ mce_id = "#{prefix}_mce_content"
       <%= f.input :location, :input_html => { :hidden => true } -%>
     <% end -%>
   <% end -%>
-  <% @factable.tags.each do |tag| -%>
+  <% factable.tags.each do |tag| -%>
     <a class="tag-link" href="#" title="<%= tag.name %>" <%=show_icon_tag?(new_fact)%>><img <%=current_tag_class(@fact, tag)%> src="<%= tag.icon %>" alt="<%= tag.name %>" /></a>
   <% end -%>
   <%= f.hidden_field :tag_list, { :class => 'tag_list' }  -%>

@@ -25,6 +25,7 @@ class Project < ActiveRecord::Base
   include ZipMethods
   
   belongs_to :project_type
+  belongs_to :project_layout
   has_many :project_roles
   has_many :users, :through => :project_roles
   has_many :facts, :as => :factable

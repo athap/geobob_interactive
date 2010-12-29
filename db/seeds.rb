@@ -54,22 +54,22 @@ tags.each do |tag|
 end
 
 project_layouts = ([
-    { :name => '1. List View Layout', :sort => 1 }, 
-    { :name => '2. Icon Grid Layout', :sort => 2 },
-    { :name => '3. Cover Flow Layout', :sort => 3 },
-    { :name => '4. GPSrs', :sort => 4 }
+    { :name => '1. List View Layout', :view => 'list', :sort => 1 }, 
+    { :name => '2. Icon Grid Layout', :view => 'grid', :sort => 2 },
+    { :name => '3. Cover Flow Layout', :view => 'flow', :sort => 3 },
+    { :name => '4. GPSrs', :view => 'gpsrs', :sort => 4 }
   ])
   
 project_layouts.each do |layout|
   project_layout = ProjectLayout.find_by_name(layout[:name])
   if project_layout
     puts "Updating #{layout[:name]}"
-    project_layout.update_attributes!(layout)
   else
     puts "Adding #{layout[:name]}"
     project_layout = ProjectLayout.create!(layout) # Create isn't working. It leaves name and sort nil
-    project_layout.name = layout[:name]
-    project_layout.sort = layout[:sort]
-    project_layout.save!
   end
+  project_layout.name = layout[:name]
+  project_layout.view = layout[:view]
+  project_layout.sort = layout[:sort]
+  project_layout.save!
 end
