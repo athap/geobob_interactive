@@ -19,6 +19,7 @@ Geobob::Application.routes.draw do
   
   resources :facts
   resources :projects do
+    resources :facts
     collection do
       get :details
       post :details

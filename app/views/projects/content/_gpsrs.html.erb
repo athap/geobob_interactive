@@ -20,7 +20,7 @@
   <p>Add points to the map to identify the course your students will take.</p>
   <div id="gps-points">
     <div id="new-fact">
-      <%= semantic_form_for :fact, :html => { :multipart => true, :class => 'ajax' } do |f| -%>
+      <%= semantic_form_for [@project, @fact || Fact.new], :html => { :multipart => true, :class => 'ajax' } do |f| -%>
         <div id="messages-container">
           <%= output_errors('Please correct the following errors:', {:class => 'help-box'}, @fact) %>
         </div>
@@ -50,14 +50,6 @@
     </div>
   </div>
 </div>
-
-
-<script type="text/javascript" language="JavaScript">
-  jQuery(document).ready(function() {
-    apply_ajax_forms();
-  });
-</script>
-
 
 <% content_for :head do -%>
 <% end -%>
