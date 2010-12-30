@@ -53,5 +53,17 @@
   </div>
 </div>
 
-<% content_for :head do -%>
-<% end -%>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+  jQuery('.gpsrs-view').live('hover', function(){
+    jQuery('#' + jQuery(this).attr('href') + '_content').show();
+    // turn on editor
+  });
+  jQuery('.gpsrs-view').live('mouseenter', function(){
+    jQuery('#' + jQuery(this).attr('href') + '_content').show();
+  });
+  jQuery('.gpsrs-view').live('mouseleave', function(){
+    jQuery('#' + jQuery(this).attr('href') + '_content').hide();
+  });  
+});
+</script>
