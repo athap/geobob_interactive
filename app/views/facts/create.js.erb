@@ -1,14 +1,19 @@
 jQuery('.waiting').hide();
 jQuery('.submit_wait').show();
 <% if @success -%>
-	var fact_content = '<%=escape_javascript(render(:partial => 'facts/fact', :locals => { :fact => @fact }))%>';
-	infowindow.setContent(decodeHtml(fact_content));
-	jQuery('#facts').append(fact_content);
-	markers['<%=@fact.dom_id%>'] = setupMarker('<%=@fact.id%>', '<%=@fact.dom_id%>', '<%=@fact.title%>', new google.maps.LatLng(<%=@fact.latlng%>), '<%=@fact.icon%>');
-	infowindow.open(map, markers['<%=@fact.dom_id%>']);
-	applyEditor();
-	paletteControl.shutDownKillMarker();
-	jQuery.fancybox.close();
+	<% if @gprs -%>
+		var fact_content = '<%=escape_javascript(render(:partial => 'facts/gpsrs_fact', :locals => { :fact => @fact }))%>'.html_safe;
+		jQuery('#gpsrs-points-container').append(fact_content);
+	<% else -%>
+		var fact_content = '<%=escape_javascript(render(:partial => 'facts/fact', :locals => { :fact => @fact }))%>';
+		infowindow.setContent(decodeHtml(fact_content));
+		jQuery('#facts').append(fact_content);
+		markers['<%=@fact.dom_id%>'] = setupMarker('<%=@fact.id%>', '<%=@fact.dom_id%>', '<%=@fact.title%>', new google.maps.LatLng(<%=@fact.latlng%>), '<%=@fact.icon%>');
+		infowindow.open(map, markers['<%=@fact.dom_id%>']);
+		applyEditor();
+		paletteControl.shutDownKillMarker();
+		jQuery.fancybox.close();
+	<% end -%>
 <% else -%>
 	<%= output_errors_ajax('messages-container', 'Please correct the following errors:', {:class => 'help-box'}, @fact, true) %>
 <% end -%>

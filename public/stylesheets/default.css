@@ -173,3 +173,7 @@ a:hover{color:#70b7ff;font-family:Arial,Helvetica,sans-serif;font-weight:bold;te
 /*project content page*/
 #project-content #new-fact label{width:140px;font-size:1.2em;}
 #project-content #new-fact .number{width:60px;}
+/*project content -gpsrs*/
+#gpsrs-points-container{position:relative;height:400px;margin-left:31px;width:276px;background-color:#fff;}
+.gpsrs-fact-dot{position:absolute;background-image:url("/images/dot.png");width:10px;height:10px;}
+.gpsrs-fact{display:none;position:absolute;}

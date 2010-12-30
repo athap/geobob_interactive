@@ -4,7 +4,7 @@ class Fact < ActiveRecord::Base
   include LocationMethods
   
   validates_presence_of :title
-  validates_presence_of :location
+  #validates_presence_of :location
   validates_presence_of :content
   validates_presence_of :factable
   

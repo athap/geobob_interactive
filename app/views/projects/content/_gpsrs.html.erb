@@ -28,6 +28,7 @@
           <%= f.input :title, :label => 'Title' -%>
           <%= f.input :content, :as => 'text' %>
           <%= f.input :photo, :label => 'Upload Photo', :as => 'file' %>
+          <p>The field can be 400 feet wide and 276 feet wide. Specify a vertical offset from -200 to +200 and a horizontal offset from -138 to + 138</p>
           <%= f.input :vertical_offset, :input_html => { :class => 'number' } %>
           <%= f.input :horizontal_offset, :input_html => { :class => 'number' } %>
         <% end -%>
@@ -46,8 +47,8 @@
 </div>
 <div id="author_rightcolumn">
   <div id="content-iPhone">
-    <div id="app-icons-drop" <%= app_background(@project) %>>
-      <%= render :partial => 'facts/fact', :collection => @project.facts %>
+    <div id="gpsrs-points-container" <%= app_background(@project) %>>
+      <%= render :partial => 'facts/gpsrs_fact', :collection => @project.facts, :as => :fact %>
     </div>
   </div>
 </div>

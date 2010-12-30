@@ -7,7 +7,8 @@ class FactsController < ApplicationController
   def create
     @factable = params[:factable_type].to_s.constantize.find(params[:factable_id])
     @fact = @factable.facts.build(params[:fact])
-    @fact.set_lat_lng_from_location unless params[:spatial] # WARNING set_lat_lng_from_location  gelocates addresses.  Even if you give it a lat,lng it will find the nearest valid address
+    @gprs = true if params[:spatial]
+    @fact.set_lat_lng_from_location unless @gprs # WARNING set_lat_lng_from_location  gelocates addresses.  Even if you give it a lat,lng it will find the nearest valid address
     if @success = @fact.save
       @message = "#{truncate_fact(@fact)} successfully created."
       @categories = @fact.categories
