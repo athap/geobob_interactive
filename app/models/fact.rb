@@ -1,23 +1,3 @@
-# == Schema Information
-#
-# Table name: facts
-#
-#  id                 :integer         not null, primary key
-#  project_id         :integer
-#  content            :text
-#  location           :string(255)
-#  lat                :decimal(15, 10)
-#  lng                :decimal(15, 10)
-#  photo_file_name    :string(255)
-#  photo_content_type :string(255)
-#  aasm_state         :string(255)
-#  photo_file_size    :integer
-#  created_at         :datetime
-#  updated_at         :datetime
-#  title              :string(255)
-#  subtitle           :string(255)     default("")
-#
-
 class Fact < ActiveRecord::Base
   
   include AASM
@@ -26,7 +6,7 @@ class Fact < ActiveRecord::Base
   validates_presence_of :title
   validates_presence_of :location
   validates_presence_of :content
-  validates_presence_of :project_id
+  validates_presence_of :factable
   
   belongs_to :factable, :polymorphic => true
   acts_as_mappable
@@ -37,6 +17,9 @@ class Fact < ActiveRecord::Base
                                  :icon => "50x50>",
                                  :tiny => "24x24>" },
                                  :default_url => "http://www.google.com/mapfiles/marker.png"
+  
+  attr_accessible :title, :subtitle, :horizontal_offset, :content, :vertical_offset, :latitude, :longitude, 
+                  :pincolor, :animate, :rightButton, :mapButton, :homepage, :image, :category
   
   aasm_initial_state :new
 
@@ -119,7 +102,9 @@ class Fact < ActiveRecord::Base
       :mapButton => mapButton,
       :homepage => homepage,
       :image => image,
-      :category => category }
+      :category => category,
+      :vertical_offset => vertical_offset,
+      :horizontal_offset => horizontal_offset }
   end
   
 end

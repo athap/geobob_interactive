@@ -61,14 +61,14 @@ ul.icon-list a{display:inline-block;margin:2px 0;padding:2px 0 5px 28px;text-dec
 
 /* Flash */
 #flashExplanation{padding:7px;padding-bottom:12px;margin-bottom:20px;}
-#flashExplanation h2{text-align:left;font-weight:bold;padding:5px 5px 5px 15px;font-size:16px}
+#flashExplanation h2{text-align:left;font-weight:bold;padding:5px 5px 5px 15px;font-size:16px;text-shadow:none;}
 #flashExplanation p{color:#333;margin-bottom:0;padding:5px;}
 #flashExplanation ul li{list-style:square;}
 /* Errors */
 .fieldWithErrors{display:inline-block;}
 .fieldWithErrors input{border:solid 2px #B61E12;}
 #errorExplanation{margin:0;padding:0;}
-#errorExplanation h2{text-align:left;font-weight:bold;padding:5px 5px 5px 15px;font-size:16px;background-color:#B61E12;color:#fff;letter-spacing:normal;}
+#errorExplanation h2{text-align:left;font-weight:bold;font-size:16px;color:#8a1f11;letter-spacing:normal;}
 #errorExplanation p{color:#333;margin-bottom:0;padding:5px;}
 #errorExplanation ul{padding:4px 4px 4px 25px;background-color:#FFFFFF;}
 #errorExplanation ul li{list-style:circle;}
@@ -113,8 +113,6 @@ img{border:none}
 #footer_container{height:100%;width:992px;margin-left:-496px;position:relative;left:50%;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#FFFFFF;z-index:10;}
 h1{font-family:Arial,Helvetica,sans-serif;font-weight:normal;color:#62b0ff;font-size:18px;text-transform:uppercase;text-shadow:0px 1px 0px #e5e5ee;}
 h2{font-family:Arial,Helvetica,sans-serif;font-weight:bold;color:#646464;font-size:24px;text-transform:uppercase;text-shadow:0px 1px 0px #e5e5ee;}
-h2{font-family:Arial,Helvetica,sans-serif;font-size:24px;font-weight:bold;color:#646464;text-shadow:0px 1px 0px #e5e5ee;}
-h2{font-family:Arial,Helvetica,sans-serif;font-weight:bold;color:#646464;font-size:24px;text-transform:uppercase;}
 h3{text-shadow:0px -1px 0px #374683}
 h4{text-shadow:0px 1px 0px #e5e5ee;}
 h6{font-family:Arial,Helvetica,sans-serif;font-size:18px;line-height:normal;text-transform:uppercase;color:#61AFFF;margin:0px;padding:0px;font-weight:normal;}

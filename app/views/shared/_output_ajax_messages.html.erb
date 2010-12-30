@@ -8,5 +8,5 @@ else
   html = "'#{html}'"
 end
 -%>
-jQuery('#<%=dom_id%>').html(<%=html%>);
+jQuery('#<%=dom_id%>').html(<%=html.html_safe%>);
 jQuery('#<%=dom_id%>').show();

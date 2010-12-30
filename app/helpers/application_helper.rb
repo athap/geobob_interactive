@@ -27,7 +27,7 @@ module ApplicationHelper
     end
   end
   
-  def output_errors_ajax(dom_id, title = '', options = { :class => 'notify-box' }, fields = nil)
+  def output_errors_ajax(dom_id, title = '', options = { :class => 'notify-box' }, fields = nil, decode_html = true)
     render :partial => 'shared/output_ajax_messages', :locals => {:fields => fields,
                                                                   :title => title,
                                                                   :options => options,

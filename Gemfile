@@ -15,7 +15,7 @@ gem "overlord"
 gem 'formtastic', '>= 1.1.0'
 gem 'paperclip', '>=2.3.5'
 gem 'sanitize', '1.2.1'
-gem "aasm", '2.1.5'
+gem "aasm", '2.2.0'
 gem 'geokit', '1.5.0'
 gem 'rubyzip', '0.9.4'
 gem 'tiny_mce', '0.1.3'

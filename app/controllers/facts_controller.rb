@@ -5,18 +5,22 @@ class FactsController < ApplicationController
                 :only => [:edit])
                 
   def create
-    @project = Project.find(params[:project_id])
-    @fact = @project.facts.build(params[:fact])
-    @fact.set_lat_lng_from_location # WARNING set_lat_lng_from_location  gelocates addresses.  Even if you give it a lat,lng it will find the nearest valid address
+    @factable = params[:factable_type].to_s.constantize.find(params[:factable_id])
+    @fact = @factable.facts.build(params[:fact])
+    @fact.set_lat_lng_from_location unless params[:spatial] # WARNING set_lat_lng_from_location  gelocates addresses.  Even if you give it a lat,lng it will find the nearest valid address
     if @success = @fact.save
       @message = "#{truncate_fact(@fact)} successfully created."
       @categories = @fact.categories
     else
-      @message = "There was a problem adding #{truncate_fact(@fact)}"
+      if @fact.content
+        @message = "There was a problem adding #{truncate_fact(@fact)}"
+      else
+        @message = "There was a problem adding your information"
+      end
     end
     respond_to do |format|
       format.html { redirect_to(@fact.project) }
-      format.js { render :template => false }
+      format.js { render :layout => false }
     end
   end
   
