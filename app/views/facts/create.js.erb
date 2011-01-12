@@ -2,8 +2,9 @@ jQuery('.waiting').hide();
 jQuery('.submit_wait').show();
 <% if @success -%>
 	<% if @gprs -%>
-		var fact_content = '<%=escape_javascript(render(:partial => 'facts/gpsrs_fact', :locals => { :fact => @fact }))%>'.html_safe;
-		jQuery('#gpsrs-points-container').append(fact_content);
+		var fact_content = '<%=escape_javascript(render(:partial => 'facts/gpsrs_fact', :locals => { :fact => @fact })).html_safe%>';
+		jQuery('#gpsrs-points-container').append(decodeHtml(fact_content));
+		apply_fancy_gpsrs();
 	<% else -%>
 		var fact_content = '<%=escape_javascript(render(:partial => 'facts/fact', :locals => { :fact => @fact }))%>';
 		infowindow.setContent(decodeHtml(fact_content));

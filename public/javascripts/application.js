@@ -22,6 +22,10 @@ function add_headers(xhr){
 	xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
 }
 
+function apply_fancy_gpsrs(){
+	jQuery("a.fancy-gpsrs").fancybox({ 'overlayShow' : false, 'hideOnOverlayClick' : false, 'hideOnContentClick' : false, 'frameWidth' : 500, 'frameHeight' : 600 }); 
+}
+
 jQuery(document).ready(function(){
 
 	jQuery("a.fancy-edit").fancybox({ 'overlayShow' : false, 'hideOnOverlayClick' : false, 'hideOnContentClick' : false, 'frameWidth' : 500, 'frameHeight' : 600 }); 

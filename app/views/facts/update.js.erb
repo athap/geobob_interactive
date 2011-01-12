@@ -1,21 +1,28 @@
-function markerCleanup(){
-	var old_marker = markers['<%=@fact.dom_id%>'];
-	markers['<%=@fact.dom_id%>'] = setupMarker('<%=@fact.id%>', '<%=@fact.dom_id%>', '<%=@fact.title%>', new google.maps.LatLng(<%=@fact.latlng%>), '<%=@fact.icon%>');
-	old_marker.setMap(null);
-}
-<% if @full_update -%>
-	var fact_content = '<%=escape_javascript(render(:partial => 'facts/fact', :locals => { :fact => @fact }))%>';
-	infowindow.setContent(decodeHtml(fact_content));
-	jQuery('.waiting').hide();
+<% if @gpsrs -%>
+	var fact_content = '<%= escape_javascript(render(:partial => 'facts/gpsrs_fact', :object => @fact, :as => :fact)).html_safe %>';
+	jQuery('#<%=@fact.dom_id%>').replaceWith(decodeHtml(fact_content));
 	jQuery.fancybox.close();
-	jQuery('#<%=@fact.dom_id%>').replaceWith(fact_content);
-	markerCleanup();
-	infowindow.open(map, markers['<%=@fact.dom_id%>']);
-	applyEditor();
-<% else %>
-	markerCleanup()
-<% end %>
+	apply_fancy_gpsrs();
+<% else -%>
+	function markerCleanup(){
+		var old_marker = markers['<%=@fact.dom_id%>'];
+		markers['<%=@fact.dom_id%>'] = setupMarker('<%=@fact.id%>', '<%=@fact.dom_id%>', '<%=@fact.title%>', new google.maps.LatLng(<%=@fact.latlng%>), '<%=@fact.icon%>');
+		old_marker.setMap(null);
+	}
+	<% if @full_update -%>
+		var fact_content = '<%=escape_javascript(render(:partial => 'facts/fact', :locals => { :fact => @fact }))%>';
+		infowindow.setContent(decodeHtml(fact_content));
+		jQuery('.waiting').hide();
+		jQuery.fancybox.close();
+		jQuery('#<%=@fact.dom_id%>').replaceWith(fact_content);
+		markerCleanup();
+		infowindow.open(map, markers['<%=@fact.dom_id%>']);
+		applyEditor();
+	<% else %>
+		markerCleanup()
+	<% end %>
 
-<% if @message -%>
-	jQuery('#flashExplanation').html('<%=@message%>');
+	<% if @message -%>
+		jQuery('#flashExplanation').html('<%=@message%>');
+	<% end -%>
 <% end -%>

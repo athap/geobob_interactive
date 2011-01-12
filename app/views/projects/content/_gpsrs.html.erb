@@ -20,26 +20,7 @@
   <p>Add points to the map to identify the course your students will take.</p>
   <div id="gps-points">
     <div id="new-fact">
-      <%= semantic_form_for @fact || Fact.new, :html => { :multipart => true, :class => 'ajax' } do |f| -%>
-        <div id="messages-container">
-          <%= output_errors('Please correct the following errors:', {:class => 'help-box'}, @fact) %>
-        </div>
-        <% f.inputs do %>
-          <%= f.input :title, :label => 'Title' -%>
-          <%= f.input :content, :as => 'text' %>
-          <%= f.input :photo, :label => 'Upload Photo', :as => 'file' %>
-          <p>The field can be 400 feet wide and 276 feet wide. Specify a vertical offset from -200 to +200 and a horizontal offset from -138 to + 138</p>
-          <%= f.input :vertical_offset, :input_html => { :class => 'number' } %>
-          <%= f.input :horizontal_offset, :input_html => { :class => 'number' } %>
-        <% end -%>
-        <%= hidden_field_tag :factable_id, @project.id %>
-        <%= hidden_field_tag :factable_type, @project.type %>
-        <%= hidden_field_tag :spatial, true %>
-        <div class="submits clearfix form-item">
-          <div class="waiting" style="display:none;">Please Wait</div>
-          <%= f.submit 'Save', :class => 'submit_wait submit_fact' %>
-        </div>
-      <% end -%>
+      <%= render :partial => 'facts/gpsrs_fact_form' %>
     </div>  
   </div>
   <br />
@@ -55,15 +36,6 @@
 
 <script type="text/javascript">
 jQuery(document).ready(function() {
-  jQuery('.gpsrs-view').live('hover', function(){
-    jQuery('#' + jQuery(this).attr('href') + '_content').show();
-    // turn on editor
-  });
-  jQuery('.gpsrs-view').live('mouseenter', function(){
-    jQuery('#' + jQuery(this).attr('href') + '_content').show();
-  });
-  jQuery('.gpsrs-view').live('mouseleave', function(){
-    jQuery('#' + jQuery(this).attr('href') + '_content').hide();
-  });  
+  apply_fancy_gpsrs();
 });
 </script>

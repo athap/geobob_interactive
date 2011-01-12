@@ -1,3 +1,8 @@
-infowindow.close();
-markers['<%=@fact.dom_id%>'].setMap(null);
-jQuery('#facts_count').html(parseInt(jQuery('#facts_count').html()) - 1);
+<% if @gpsrs -%>
+	jQuery('#<%=@fact.dom_id%>').remove();
+	jQuery.fancybox.close();
+<% else -%>
+	infowindow.close();
+	markers['<%=@fact.dom_id%>'].setMap(null);
+	jQuery('#facts_count').html(parseInt(jQuery('#facts_count').html()) - 1);
+<% end -%>

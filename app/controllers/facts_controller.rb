@@ -27,7 +27,13 @@ class FactsController < ApplicationController
   
   def edit
     @fact = Fact.find(params[:id])
-    @project = @fact.project
+    @factable = @fact.factable
+    if @factable && @factable.respond_to?(:project_layout)
+      @project = @factable
+      if(@project.project_layout.view == 'gpsrs')
+        @custom_view = @project.project_layout.view
+      end
+    end
     respond_to do |format|
       format.html
       format.js { render :layout => false }
@@ -42,7 +48,8 @@ class FactsController < ApplicationController
     else
       @full_update = true
       @fact.attributes = params[:fact]
-      @fact.set_lat_lng_from_location # WARNING set_lat_lng_from_location  gelocates addresses.  Even if you give it a lat,lng it will find the nearest valid address
+      @gpsrs = true if params[:spatial]
+      @fact.set_lat_lng_from_location unless @gpsrs # WARNING set_lat_lng_from_location  gelocates addresses.  Even if you give it a lat,lng it will find the nearest valid address
       success = @fact.save
     end
 
@@ -60,11 +67,12 @@ class FactsController < ApplicationController
 
   def destroy
     @fact = Fact.find(params[:id])
-    @project = @fact.project
+    @gpsrs = true if params[:spatial]
+    @factable = @fact.factable
     @fact.destroy
     respond_to do |format|
-      format.html { redirect_to(@project) }
-      format.js { render :template => false }
+      format.html { redirect_to(@factable) }
+      format.js { render :layout => false }
     end
   end
   

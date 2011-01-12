@@ -1,6 +1,8 @@
-<div id="<%=fact.dom_id%>" class="gpsrs-fact-dot" <%=calculate_gpsrs_position(fact).html_safe%> >
-  <a href="<%=fact.dom_id%>" class="gpsrs-view"><img src="/images/dot.png" /></a>
-</div>
-<div id="<%=fact.dom_id%>_content" class="gpsrs-fact" <%=calculate_gpsrs_position(fact).html_safe%>>
-  <h3 class="fact-title"><%= fact.title %></h3>
+<div id="<%=fact.dom_id%>">
+  <div id="<%=fact.dom_id%>_dot" class="gpsrs-fact-dot" <%=calculate_gpsrs_position(fact).html_safe%> >
+    <a href="<%=edit_fact_path(fact)%>" class="gpsrs-view fancy-gpsrs"><img src="/images/dot.png" /></a>
+  </div>
+  <div id="<%=fact.dom_id%>_content" class="gpsrs-fact" <%=calculate_gpsrs_position(fact).html_safe%>>
+    <h3 class="fact-title"><%= fact.title %></h3>
+  </div>
 </div>
