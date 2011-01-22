@@ -3,6 +3,6 @@
     <a href="<%=edit_fact_path(fact)%>" class="gpsrs-view fancy-gpsrs"><img src="/images/dot.png" /></a>
   </div>
   <div id="<%=fact.dom_id%>_content" class="gpsrs-fact" <%=calculate_gpsrs_position(fact).html_safe%>>
-    <h3 class="fact-title"><%= fact.title %></h3>
+    <h3 class="fact-title"><a href="<%=edit_fact_path(fact)%>" class="gpsrs-view fancy-gpsrs"><%=fact.position%>. <%= fact.title %></a></h3>
   </div>
 </div>

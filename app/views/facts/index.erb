@@ -1,0 +1,12 @@
+<div id="sort-facts-container">
+  <h1>Reorder map points</h1>
+	<ol id="sort-facts">
+	  <%= render :partial => 'facts/list_fact', :collection => @facts, :as => :fact %>
+	</ol>
+</div>
+
+<script type="text/javascript" language="JavaScript">
+  jQuery(document).ready(function() {
+    apply_fact_sort('<%= sort_project_facts_path(@project) %>');
+  });
+</script>

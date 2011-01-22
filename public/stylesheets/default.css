@@ -180,4 +180,7 @@ a.gpsrs-view{cursor:pointer;}
 #fancybox-inner  .gpsrs-form label{width:140px;font-size:1.2em;}
 #project-content .gpsrs-form .number,
 #fancybox-inner .gpsrs-form .number{width:60px;}
+#gpsrs-points-control{width:338px;margin:10px 0;}
+/*facts*/
+#sort-facts-container{width:480px;height:580px;}
 

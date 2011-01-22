@@ -59,7 +59,7 @@ class ProjectsController < ApplicationController
     @icons.sort {|a,b| b.sort <=> a.sort}
     if @project.project_layout.view == 'gpsrs' && @project.facts.empty?
       # create a default starting point
-      @fact = @project.facts.create(:title => 'start', :content => 'This is your starting point', :vertical_offset => 0, :horizontal_offset => 0)
+      @project.facts.create(:title => 'start', :content => 'This is your starting point', :vertical_offset => 0, :horizontal_offset => 0)
     end
   end
   

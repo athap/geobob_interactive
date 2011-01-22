@@ -23,12 +23,12 @@ function add_headers(xhr){
 }
 
 function apply_fancy_gpsrs(){
-	jQuery("a.fancy-gpsrs").fancybox({ 'overlayShow' : false, 'hideOnOverlayClick' : false, 'hideOnContentClick' : false, 'frameWidth' : 500, 'frameHeight' : 600 }); 
+	jQuery("a.fancy-gpsrs").fancybox({ 'overlayShow' : false, 'hideOnOverlayClick' : false, 'hideOnContentClick' : false, 'width' : 500, 'height' : 600 }); 
 }
 
 jQuery(document).ready(function(){
 
-	jQuery("a.fancy-edit").fancybox({ 'overlayShow' : false, 'hideOnOverlayClick' : false, 'hideOnContentClick' : false, 'frameWidth' : 500, 'frameHeight' : 600 }); 
+	jQuery("a.fancy-edit").fancybox({ 'overlayShow' : false, 'hideOnOverlayClick' : false, 'hideOnContentClick' : false, 'width' : 500, 'height' : 600, 'autoDimensions':false, 'autoScale': false }); 
 	
 	// Tabs for facts on show project page
 	jQuery('#show_new').click(function(){
@@ -162,6 +162,25 @@ jQuery(document).ready(function(){
   });
 
 });
+
+function apply_fact_sort(url){
+	jQuery("#sort-facts").sortable({
+		axis: 'y',
+		opacity: 0.4,
+		scroll: true,
+    update: function(event, ui) {
+			jQuery.ajax({
+          type: 'post',
+          data: jQuery('#sort-facts').sortable('serialize'),
+          dataType: 'script',
+          complete: function(request) {
+          	jQuery('#sort-facts').effect('highlight');
+          },
+          url: url
+      })
+    }
+	}).disableSelection();	
+}
 
 function apply_icon_dnd() {
   var $drop = jQuery('#select-icons-drop');

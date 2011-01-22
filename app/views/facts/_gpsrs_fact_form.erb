@@ -2,7 +2,7 @@
   <div id="messages-container">
     <%= output_errors('Please correct the following errors:', {:class => 'help-box'}, @fact) %>
   </div>
-  <% f.inputs do %>
+  <%= f.inputs do %>
     <%= f.input :title, :label => 'Title' -%>
     <%= f.input :content, :as => 'text' %>
     <%= f.input :photo, :label => 'Upload Photo', :as => 'file' %>

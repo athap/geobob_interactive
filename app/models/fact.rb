@@ -11,6 +11,7 @@ class Fact < ActiveRecord::Base
   belongs_to :factable, :polymorphic => true
   acts_as_mappable
   acts_as_taggable
+  
   has_attached_file :photo, 
                     :styles => { :medium => "300x300>",
                                  :thumb => "100x100>",
@@ -29,6 +30,10 @@ class Fact < ActiveRecord::Base
   aasm_event :approve do
     transitions :to => :approved, :from => [:new]
   end
+  
+  scope :by_position, :order => "position ASC, id ASC"
+  
+  before_create :set_position
   
   def categories
     categories = self.tags.collect{ |tag| tag.name }
@@ -86,6 +91,15 @@ class Fact < ActiveRecord::Base
       tag.name
     else
       ''
+    end
+  end
+  
+  def set_position
+    last_fact = self.factable.facts.by_position.last
+    if last_fact
+      self.position = last_fact.position + 1
+    else
+      self.position = 1
     end
   end
   

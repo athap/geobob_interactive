@@ -1,8 +1,31 @@
 class FactsController < ApplicationController
                 
   before_filter :authenticate_user!
+  before_filter :setup_parent, :only => [:index, :sort]
+  
   uses_tiny_mce(:options => GlobalConfig.map_mce_options,
                 :only => [:edit])
+  
+  def index
+    @facts = @parent.facts.by_position
+    respond_to do |format|
+      format.js { render :layout => false }
+    end
+  end
+  
+  def sort
+    # Sortable lists with jQuery:
+    # http://awesomeful.net/posts/47-sortable-lists-with-jquery-in-rails
+    @facts = @parent.facts.by_position
+    @facts.each do |fact|
+      fact.position = params['fact'].index(fact.id.to_s) + 1
+      fact.save
+    end
+    @facts = @parent.facts.by_position # Reload the facts
+    respond_to do |format|
+      format.js { render :layout => false }
+    end
+  end
                 
   def create
     @factable = params[:factable_type].to_s.constantize.find(params[:factable_id])
