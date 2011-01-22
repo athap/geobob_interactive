@@ -16,17 +16,19 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.html
       format.xml  { render :xml => @projects }
+      format.json { render :json => @projects.to_json }
     end
   end
 
   def show
-    @facts = @project.facts
+    @facts = @project.facts.by_position
     @tags = @project.tags.all(:order => 'name')
     @fact = Fact.new
     @page_title = @project.name
     respond_to do |format|
       format.html
       format.xml  { render :xml => @project }
+      format.json { render :json => { :annotation => @facts.collect{|fact| fact.json_hash} }.to_json }
     end
   end
   
