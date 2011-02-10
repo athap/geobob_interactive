@@ -33,6 +33,13 @@ ActiveRecord::Schema.define(:version => 20110122200505) do
 
   add_index "access_codes", ["code"], :name => "index_access_codes_on_code"
 
+  create_table "answers", :force => true do |t|
+    t.integer  "question_id"
+    t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "app_feeds", :force => true do |t|
     t.string   "title"
     t.string   "url",               :limit => 2083
@@ -144,6 +151,13 @@ ActiveRecord::Schema.define(:version => 20110122200505) do
     t.string   "background_image_file_name"
     t.string   "background_image_content_type"
     t.string   "background_image_file_size"
+  end
+
+  create_table "questions", :force => true do |t|
+    t.integer  "survey_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "roles", :force => true do |t|
