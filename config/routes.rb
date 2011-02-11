@@ -19,6 +19,7 @@ Geobob::Application.routes.draw do
   
   resources :facts
   resources :projects do
+    resources :icons
     resources :facts do
       post :sort, :on => :collection
     end

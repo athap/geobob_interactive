@@ -36,9 +36,12 @@ ActiveRecord::Schema.define(:version => 20110122200505) do
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
     t.string   "content"
+    t.boolean  "correct"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "answers", ["question_id"], :name => "index_answers_on_question_id"
 
   create_table "app_feeds", :force => true do |t|
     t.string   "title"
@@ -154,11 +157,13 @@ ActiveRecord::Schema.define(:version => 20110122200505) do
   end
 
   create_table "questions", :force => true do |t|
-    t.integer  "survey_id"
+    t.integer  "fact_id"
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "questions", ["fact_id"], :name => "index_questions_on_fact_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"

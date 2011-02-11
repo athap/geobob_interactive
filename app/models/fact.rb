@@ -12,6 +12,9 @@ class Fact < ActiveRecord::Base
   acts_as_mappable
   acts_as_taggable
   
+  has_many :questions, :dependent => :destroy
+  accepts_nested_attributes_for :questions, :reject_if => lambda { |a| a['content'].blank? }, :allow_destroy => true
+  
   has_attached_file :photo, 
                     :styles => { :medium => "300x300>",
                                  :thumb => "100x100>",
@@ -20,7 +23,7 @@ class Fact < ActiveRecord::Base
                                  :default_url => "http://www.google.com/mapfiles/marker.png"
   
   attr_accessible :title, :subtitle, :horizontal_offset, :content, :vertical_offset, :latitude, :longitude, 
-                  :pincolor, :animate, :rightButton, :mapButton, :homepage, :image, :category
+                  :pincolor, :animate, :rightButton, :mapButton, :homepage, :image, :category, :questions_attributes
   
   aasm_initial_state :new
 
@@ -34,6 +37,13 @@ class Fact < ActiveRecord::Base
   scope :by_position, :order => "position ASC, id ASC"
   
   before_create :set_position
+  
+  def add_default_questions
+    1.times do
+      question = self.questions.build
+      4.times { question.answers.build }
+    end
+  end  
   
   def categories
     categories = self.tags.collect{ |tag| tag.name }

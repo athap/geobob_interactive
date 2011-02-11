@@ -1,0 +1,12 @@
+<hr />
+<div class="fields">
+  <div>
+    <%= f.label :content, "Question" %>
+    <%= remove_child_link "remove", f %><br />
+    <%= f.text_area :content, :rows => 3 %>
+  </div>
+  <%= f.fields_for :answers do |a| %>
+    <%= render 'facts/answer_fields', :f => a %>
+  <% end %>
+  <div><%= add_child_link "Add Answer", f, :answers %></div>
+</div>

@@ -161,6 +161,24 @@ jQuery(document).ready(function(){
     });
   });
 
+  jQuery('a.add_child').live("click", function() {
+    var association = jQuery(this).attr('data-association');
+    var template = jQuery(this).prev().html();
+    var regexp = new RegExp('new_' + association, 'g');
+    var new_id = new Date().getTime();
+    jQuery(this).parent().before(template.replace(regexp, new_id));
+    return false;
+  });
+
+  jQuery('a.remove_child').live('click', function() {
+    var hidden_field = jQuery(this).prev('input[type=hidden]')[0];
+    if(hidden_field) {
+      hidden_field.value = '1';
+    }
+    jQuery(this).parents('.fields:first').hide();
+    return false;
+  });
+
 });
 
 function apply_fact_sort(url){
@@ -279,4 +297,3 @@ function decodeHtml(str){
       return str.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>'); 
     return str; 
 }
-

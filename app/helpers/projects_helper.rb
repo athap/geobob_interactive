@@ -41,4 +41,5 @@ module ProjectsHelper
     h = h + 138 # 276 wide. 138 starts us in the center
     %Q{style="top:#{v}px;left:#{h}px;"}
   end
+  
 end
