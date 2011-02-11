@@ -19,8 +19,8 @@
   <% end -%>
 
   <div id="questions">
-    <%= f.fields_for :questions do |builder| %>
-      <%= render :partial => "facts/question_fields", :locals => { :f => builder } %>
+    <%= f.semantic_fields_for :questions do |q| %>
+      <%= render :partial => "facts/question_fields", :locals => { :f => q } %>
     <% end %>
     <div><%= add_child_link "Add Question", f, :questions %></div>
   </div>
