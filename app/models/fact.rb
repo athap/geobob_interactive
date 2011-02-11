@@ -116,6 +116,7 @@ class Fact < ActiveRecord::Base
   
   def json_hash
     { :id => id,
+      :position => position,
       :title => title || "#{id}",
       :subtitle => subtitle,
       :content => content,
@@ -126,6 +127,7 @@ class Fact < ActiveRecord::Base
       :rightButton => rightButton,
       :mapButton => mapButton,
       :homepage => homepage,
+      :icon => icon,
       :image => image,
       :category => category,
       :vertical_offset => vertical_offset,
