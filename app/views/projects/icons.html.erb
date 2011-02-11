@@ -1,7 +1,7 @@
-<div class="text_field"> 
+<div id="project-icons" class="text_field"> 
   <h1>Select Icons for <%= h @project.name %></h1>
   <p>
-    <%= link_to 'Project', @project %> | 
+    <%= link_to 'Go to Project', @project %> | 
     <%= link_to 'All Projects', projects_path %>
   </p>
   <%= output_message_container('messages', 'messages-container') %>
@@ -23,3 +23,10 @@
     <%= f.hidden_field :tag_list, :class => 'select-tag-list' -%>
   <% end -%>
 </div>
+
+<script type="text/javascript" language="JavaScript">
+  jQuery(document).ready(function() {
+    apply_ajax_forms();
+    apply_icon_dnd();
+  });
+</script>

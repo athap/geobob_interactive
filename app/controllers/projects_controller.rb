@@ -47,6 +47,12 @@ class ProjectsController < ApplicationController
     render
   end
   
+  def icons
+    @project = Project.find(params[:id])
+    @project_icons = @project.tags
+    @available_icons = ActsAsTaggableOn::Tag.all - @project_icons
+  end
+  
   def details
     # This is a bit of a hack since updates should be handled by update but we need to make sure and capture the layout change if the user changes it
     @project.update_attributes!(params[:project]) if !@project.blank?
