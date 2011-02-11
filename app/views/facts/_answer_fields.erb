@@ -1,6 +1,9 @@
-<div class="fields">
-  <%= f.label :content, "Answer" %>
-  <%= f.text_field :content %>
-  <%= f.check_box :correct %>
-  <%= remove_child_link "remove", f %>
+<div class="answer">
+  <p class="title">Answer <%= remove_child_link "(remove)", f %></p>
+  <ul>
+    <%= f.input :content %>
+    <%= f.input :correct_feedback %>
+    <%= f.input :incorrect_feedback %>
+    <%= f.input :correct %>
+  </ul>
 </div>

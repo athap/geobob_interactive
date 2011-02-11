@@ -186,5 +186,10 @@ a.gpsrs-view{cursor:pointer;}
 /*facts*/
 #sort-facts-container{width:480px;height:580px;}
 
-.fields{margin:5px 0;}
-
+/*questions */
+.question{margin:5px 0;}
+.answer{margin:10px 0 30px 0;}
+.answer .title{font-size:18px;font-weight:bold;}
+.answer .title a{font-size:12px;}
+.answer ul li{margin-left:20px;}
+#project-content .gpsrs-form .answer label{width:150px;}

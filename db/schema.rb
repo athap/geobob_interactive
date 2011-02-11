@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110122200505) do
+ActiveRecord::Schema.define(:version => 20110211161452) do
 
   create_table "access_code_requests", :force => true do |t|
     t.string   "email"
@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(:version => 20110122200505) do
     t.boolean  "correct"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "correct_feedback"
+    t.string   "incorrect_feedback"
   end
 
   add_index "answers", ["question_id"], :name => "index_answers_on_question_id"
