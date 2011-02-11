@@ -67,12 +67,12 @@ jQuery(document).ready(function(){
 	jQuery(document).oneTime(2000, "notify-box", function() {
 		jQuery('.notify-box').fadeOut();
 	});
-	
+
+  jQuery('.tag-link').live("click", function(){
+    jQuery('.tag_list').val(jQuery(this).attr('title'));
+		jQuery('.current_tag').removeClass('current_tag');
+		jQuery(this).children('img').addClass('current_tag');
 	// // Tag suggest
-	//   jQuery('.tag-link').live("click", function(){
-	//     jQuery('.tag_list').val(jQuery(this).attr('title'));
-	// 	jQuery('.current_tag').removeClass('current_tag');
-	// 	jQuery(this).children('img').addClass('current_tag');
 	// 	// var tag = jQuery(this).html();
 	//     //     var tags = jQuery('.tag_list').val()
 	//     //     if(tags.length > 0){
@@ -96,7 +96,7 @@ jQuery(document).ready(function(){
 	//     //     }
 	//     //     jQuery('.tag_list').val(tags_cleaned.join(', '));
 	//     return false;
-	//   });
+	});
 
 	jQuery('a.ajax-delete').live('click', function() {
     var title = jQuery(this).attr('title');

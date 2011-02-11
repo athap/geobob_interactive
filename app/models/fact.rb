@@ -23,7 +23,7 @@ class Fact < ActiveRecord::Base
                                  :default_url => "http://www.google.com/mapfiles/marker.png"
   
   attr_accessible :title, :subtitle, :horizontal_offset, :content, :vertical_offset, :latitude, :longitude, 
-                  :pincolor, :animate, :rightButton, :mapButton, :homepage, :image, :category, :questions_attributes
+                  :pincolor, :animate, :rightButton, :mapButton, :homepage, :image, :category, :questions_attributes, :tag_list
   
   aasm_initial_state :new
 
@@ -57,7 +57,8 @@ class Fact < ActiveRecord::Base
     elsif tag = self.tags.first
       tag.icon
     else
-      'http://maps.google.com/mapfiles/marker.png'
+      '/images/dot.png'
+      #'http://maps.google.com/mapfiles/marker.png'
     end
   end
   

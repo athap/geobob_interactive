@@ -26,7 +26,7 @@ class ProjectsController < ApplicationController
     @fact = Fact.new
     @page_title = @project.name
     respond_to do |format|
-      format.html
+      format.html { redirect_to edit_project_path(@project) }
       format.xml  { render :xml => @project }
       format.json { render :json => { :annotation => @facts.collect{|fact| fact.json_hash} }.to_json }
     end

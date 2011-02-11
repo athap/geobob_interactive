@@ -4,6 +4,13 @@
   </div>
   <%= f.inputs do %>
     <%= f.input :title, :label => 'Title' -%>
+    <li>
+      <p><label>Select Icon</label></p>
+      <% @project.tags.each do |tag| -%>
+        <a class="tag-link" href="#" title="<%= tag.name %>" <%=show_icon_tag?(@fact.new_record?)%>><img <%=current_tag_class(@fact, tag)%> src="<%= tag.icon %>" alt="<%= tag.name %>" /></a>
+      <% end -%>
+      <%= f.hidden_field :tag_list, { :class => 'tag_list' }  -%>
+    </li>
     <%= f.input :content, :as => 'text' %>
     <%= f.input :photo, :label => 'Upload Photo', :as => 'file' %>
     <p>The field can be 400 feet wide and 276 feet wide. Specify a vertical offset from -200 to +200 and a horizontal offset from -138 to + 138</p>
