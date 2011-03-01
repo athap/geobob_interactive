@@ -72,6 +72,7 @@ jQuery(document).ready(function(){
     jQuery('.tag_list').val(jQuery(this).attr('title'));
 		jQuery('.current_tag').removeClass('current_tag');
 		jQuery(this).children('img').addClass('current_tag');
+		return false;
 	// // Tag suggest
 	// 	// var tag = jQuery(this).html();
 	//     //     var tags = jQuery('.tag_list').val()
