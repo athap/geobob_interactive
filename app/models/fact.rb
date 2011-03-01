@@ -115,6 +115,7 @@ class Fact < ActiveRecord::Base
   end
   
   def json_hash
+    
     { :id => id,
       :position => position,
       :title => title || "#{id}",
@@ -131,7 +132,8 @@ class Fact < ActiveRecord::Base
       :image => image,
       :category => category,
       :vertical_offset => vertical_offset,
-      :horizontal_offset => horizontal_offset }
+      :horizontal_offset => horizontal_offset,
+      :questions => self.questions.includes(:answers).collect{|q| q.json_hash} }
   end
   
 end

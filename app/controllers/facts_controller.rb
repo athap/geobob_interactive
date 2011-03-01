@@ -71,7 +71,6 @@ class FactsController < ApplicationController
     else
       @full_update = true
       @fact.attributes = params[:fact]
-      debugger
       @gpsrs = true if params[:spatial]
       @fact.set_lat_lng_from_location unless @gpsrs # WARNING set_lat_lng_from_location  gelocates addresses.  Even if you give it a lat,lng it will find the nearest valid address
       success = @fact.save
