@@ -1,7 +1,7 @@
 class FactsController < ApplicationController
                 
   before_filter :authenticate_user!
-  before_filter :setup_parent, :only => [:index, :sort]
+  before_filter :setup_parent, :only => [:index, :sort, :new]
   
   uses_tiny_mce(:options => GlobalConfig.map_mce_options,
                 :only => [:edit])
@@ -26,7 +26,20 @@ class FactsController < ApplicationController
       format.js { render :layout => false }
     end
   end
-                
+  
+  def new
+    @factable = @parent
+    @fact = @parent.facts.new
+    setup_project_layout
+    respond_to do |format|
+      format.html
+      format.js do
+        @enable_js = true
+        render :layout => false
+      end
+    end
+  end
+                  
   def create
     @factable = params[:factable_type].to_s.constantize.find(params[:factable_id])
     @fact = @factable.facts.build(params[:fact])
@@ -51,15 +64,13 @@ class FactsController < ApplicationController
   def edit
     @fact = Fact.find(params[:id])
     @factable = @fact.factable
-    if @factable && @factable.respond_to?(:project_layout)
-      @project = @factable
-      if(@project.project_layout.view == 'gpsrs')
-        @custom_view = @project.project_layout.view
-      end
-    end
+    setup_project_layout
     respond_to do |format|
       format.html
-      format.js { render :layout => false }
+      format.js do
+        @enable_js = true
+        render :layout => false
+      end
     end
   end
   
@@ -104,4 +115,13 @@ class FactsController < ApplicationController
       "#{ActionController::Base.helpers.strip_tags(fact.content)[0...30]} ..."
     end
 
+    def setup_project_layout
+      if @factable && @factable.respond_to?(:project_layout)
+        @project = @factable
+        if(@project.project_layout.view == 'gpsrs')
+          @custom_view = @project.project_layout.view
+        end
+      end
+    end
+    
 end

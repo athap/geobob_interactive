@@ -1,5 +1,0 @@
-<% if @custom_view %>
-	<%= render :partial => "facts/#{@custom_view}_fact_form" %>
-<% else -%>
-	<%= render :partial => 'facts/form', :locals => { :project => nil, :new_fact => false } %>
-<% end -%>

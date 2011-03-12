@@ -1,0 +1,14 @@
+<% if @custom_view %>
+	<%= render :partial => "facts/#{@custom_view}_fact_form" %>
+<% else -%>
+	<%= render :partial => 'facts/form', :locals => { :factable => @factable, :new_fact => false } %>
+<% end -%>
+
+<% if @enable_js -%>
+<script type="text/javascript" language="JavaScript">
+  jQuery(document).ready(function() {
+    apply_ajax_forms();
+		applyEditor();
+  });
+</script>
+<% end -%>

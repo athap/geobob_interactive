@@ -20,7 +20,8 @@
   <p>Add points to the map to identify the course your students will take.</p>
   <div id="gps-points">
     <div id="new-fact">
-      <%= render :partial => 'facts/gpsrs_fact_form' %>
+      <%#= render :partial => 'facts/gpsrs_fact_form' %>
+      <a href="<%=new_project_fact_path(@project)%>" class="gpsrs-view fancy-gpsrs">Add new point</a>
     </div>  
   </div>
   <br />
