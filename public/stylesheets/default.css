@@ -145,10 +145,10 @@ a:hover{color:#70b7ff;font-family:Arial,Helvetica,sans-serif;font-weight:bold;te
 .step1_left{width:80%;float:left;}
 .step1_right{float:left;width:20%;}
 
-#content-iPhone{background-image:url("/images/author_imgs/iphone.jpg");width:338px;height:505px;padding:120px 0 0;}
-#content-iPhone #app-icons-drop{height:400px;margin-left:31px;width:276px;background-color:#fff;} 
-#content-iPhone #app-icons-drop .icon{float:left;width:82px;height:82px;text-align:center;display:inline-block;margin:5px;position:relative;}
-#content-iPhone #app-icons-drop .icon .delete{position:absolute;top:-7px;right:-7px;display:none;}
+.content-iPhone{background-image:url("/images/author_imgs/iphone.jpg");width:338px;height:505px;padding:120px 0 0;}
+.content-iPhone #app-icons-drop{height:400px;margin-left:31px;width:276px;background-color:#fff;} 
+.content-iPhone #app-icons-drop .icon{float:left;width:82px;height:82px;text-align:center;display:inline-block;margin:5px;position:relative;}
+.content-iPhone #app-icons-drop .icon .delete{position:absolute;top:-7px;right:-7px;display:none;}
 #app-icons{display:inline-block;width:550px;}
 #app-icons .icon{float:left;width:75px;height:70px;text-align:center;display:inline-block;}
 
@@ -172,8 +172,8 @@ a:hover{color:#70b7ff;font-family:Arial,Helvetica,sans-serif;font-weight:bold;te
 .project-icons-active{background-color:#827A6D;}
 .tag-icon{width:210px;height:45px;}
 .tag-icon img{float:left;}
+
 /*project content -gpsrs*/
-#gpsrs-points-container{position:relative;height:400px;margin-left:31px;width:276px;background-color:#fff;}
 .gpsrs-fact-dot{position:absolute;width:10px;height:10px;z-index:1000;}
 .gpsrs-fact{position:absolute;}
 .gpsrs-fact h3{text-shadow:none;}
@@ -183,6 +183,15 @@ a.gpsrs-view{cursor:pointer;}
 #project-content .gpsrs-form .number,
 #fancybox-inner .gpsrs-form .number{width:60px;}
 #gpsrs-points-control{width:338px;margin:10px 0;}
+#gpsrs-points-container,
+#gpsrs-preview{position:relative;height:400px;margin-left:31px;width:276px;background-color:#fff;}
+
+/*gpsrs popup*/
+#gpsrs-editor-leftcolumn{float:left;height:100%;position:relative;width:620px;}
+#gpsrs-editor-rightcolumn{float:left;height:100%;position:relative;width:340px;}
+#gpsrs-editor-popup{width:960px;}
+#gpsrs-editor-popup #fact_content{width:95%;}
+
 /*facts*/
 #sort-facts-container{width:480px;height:580px;}
 

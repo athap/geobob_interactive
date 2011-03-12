@@ -28,7 +28,7 @@
   <p><a href="<%= build_project_path %>"><img width="182" height="40" alt="Next" src="/images/author_imgs/next_button3.png"></a></p>
 </div>
 <div id="author_rightcolumn">
-  <div id="content-iPhone">
+  <div class="content-iPhone">
     <div id="gpsrs-points-container" <%= app_background(@project) %>>
       <%= render :partial => 'facts/gpsrs_fact', :collection => @project.facts, :as => :fact %>
     </div>
@@ -39,5 +39,8 @@
 <script type="text/javascript">
 jQuery(document).ready(function() {
   apply_fancy_gpsrs();
+  jQuery('#fact_content').live('keyup', function(){
+    jQuery('#gpsrs-preview').html(jQuery(this).val());
+  });
 });
 </script>

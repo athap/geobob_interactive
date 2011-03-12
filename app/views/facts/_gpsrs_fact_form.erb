@@ -1,38 +1,49 @@
-<%= semantic_form_for @fact, :html => { :multipart => true, :class => 'ajax gpsrs-form' } do |f| -%>
-  <div id="messages-container">
-    <%= output_errors('Please correct the following errors:', {:class => 'help-box'}, @fact) %>
-  </div>
-  <%= f.inputs do %>
-    <%= f.input :title, :label => 'Title' -%>
-    <li>
-      <p><label>Select Icon</label></p>
-      <% @project.tags.each do |tag| -%>
-        <a class="tag-link" href="#" title="<%= tag.name %>" <%=show_icon_tag?(@fact.new_record?)%>><img <%=current_tag_class(@fact, tag)%> src="<%= tag.icon %>" alt="<%= tag.name %>" /></a>
+<div id="gpsrs-editor-popup">
+  <div id="gpsrs-editor-leftcolumn">
+    <%= semantic_form_for @fact, :html => { :multipart => true, :class => 'ajax gpsrs-form' } do |f| -%>
+      <div id="messages-container">
+        <%= output_errors('Please correct the following errors:', {:class => 'help-box'}, @fact) %>
+      </div>
+      <%= f.inputs do %>
+        <%= f.input :title, :label => 'Title' -%>
+        <li>
+          <p><label>Select Icon</label></p>
+          <% @project.tags.each do |tag| -%>
+            <a class="tag-link" href="#" title="<%= tag.name %>" <%=show_icon_tag?(@fact.new_record?)%>><img <%=current_tag_class(@fact, tag)%> src="<%= tag.icon %>" alt="<%= tag.name %>" /></a>
+          <% end -%>
+          <%= f.hidden_field :tag_list, { :class => 'tag_list' }  -%>
+        </li>
+        <%= f.input :content, :as => 'text' %>
+        <%= f.input :photo, :label => 'Upload Image', :as => 'file' %>
+        <p>The field can be 400 feet wide and 276 feet wide. Specify a North/South from -200 to +200 and an East/West offset from -138 to + 138</p>
+        <%= f.input :vertical_offset, :input_html => { :class => 'number' }, :label => 'North/South offset' %>
+        <%= f.input :horizontal_offset, :input_html => { :class => 'number' }, :label => 'East/West offset' %>
       <% end -%>
-      <%= f.hidden_field :tag_list, { :class => 'tag_list' }  -%>
-    </li>
-    <%= f.input :content, :as => 'text' %>
-    <%= f.input :photo, :label => 'Upload Image', :as => 'file' %>
-    <p>The field can be 400 feet wide and 276 feet wide. Specify a North/South from -200 to +200 and an East/West offset from -138 to + 138</p>
-    <%= f.input :vertical_offset, :input_html => { :class => 'number' }, :label => 'North/South offset' %>
-    <%= f.input :horizontal_offset, :input_html => { :class => 'number' }, :label => 'East/West offset' %>
-  <% end -%>
 
-  <div id="questions">
-    <%= f.semantic_fields_for :questions do |q| %>
-      <%= render :partial => "facts/question_fields", :locals => { :f => q } %>
-    <% end %>
-    <div><%= add_child_link "Add Question", f, :questions %></div>
-  </div>
+      <div id="questions">
+        <%= f.semantic_fields_for :questions do |q| %>
+          <%= render :partial => "facts/question_fields", :locals => { :f => q } %>
+        <% end %>
+        <div><%= add_child_link "Add Question", f, :questions %></div>
+      </div>
   
-  <%= hidden_field_tag :factable_id, @project.id %>
-  <%= hidden_field_tag :factable_type, @project.type %>
-  <%= hidden_field_tag :spatial, true %>
-  <div class="submits clearfix form-item">
-    <div class="waiting" style="display:none;">Please Wait</div>
-    <%= f.submit 'Save', :class => 'submit_wait submit_fact' %>
-    <% if !@fact.new_record? -%>
-      <a class="delete ajax-delete" href="<%= fact_path(@fact, :spatial => true) %>">Delete this point</a>
+      <%= hidden_field_tag :factable_id, @project.id %>
+      <%= hidden_field_tag :factable_type, @project.type %>
+      <%= hidden_field_tag :spatial, true %>
+      <div class="submits clearfix form-item">
+        <div class="waiting" style="display:none;">Please Wait</div>
+        <%= f.submit 'Save', :class => 'submit_wait submit_fact' %>
+        <% if !@fact.new_record? -%>
+          <a class="delete ajax-delete" href="<%= fact_path(@fact, :spatial => true) %>">Delete this point</a>
+        <% end -%>
+      </div>
     <% end -%>
   </div>
-<% end -%>
+  <div id="gpsrs-editor-rightcolumn">
+    <div class="content-iPhone">
+      <div id="gpsrs-preview" <%= app_background(@project) %>></div>
+    </div>
+  </div>
+</div>
+
+

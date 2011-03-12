@@ -55,14 +55,6 @@ function init_map(){
 
 };
 
-function applyEditor(){
-	jQuery("a.inline-edit").fancybox({'autoDimensions':true});
-	// jQuery('a.inline-edit').click(function(){
-	// 	jQuery(this).replaceWith(jQuery('#waiting').show());
-	// 	return false;
-	// });
-}
-
 function setupMarker(id, dom_id, title, latLng, icon){
   var marker = new google.maps.Marker({ position: latLng, title: title, map: map, draggable: true, icon: icon });
   jQuery.data(marker, 'fact_id', id);

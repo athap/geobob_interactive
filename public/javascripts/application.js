@@ -22,13 +22,21 @@ function add_headers(xhr){
 	xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
 }
 
+function applyEditor(){
+	jQuery("a.inline-edit").fancybox({'autoDimensions':true});
+	// jQuery('a.inline-edit').click(function(){
+	// 	jQuery(this).replaceWith(jQuery('#waiting').show());
+	// 	return false;
+	// });
+}
+
 function apply_fancy_gpsrs(){
-	jQuery("a.fancy-gpsrs").fancybox({ 'overlayShow' : false, 'hideOnOverlayClick' : false, 'hideOnContentClick' : false, 'width' : 500, 'height' : 600 }); 
+	jQuery("a.fancy-gpsrs").fancybox({ 'overlayShow': false, 'hideOnOverlayClick': false, 'hideOnContentClick': false }); 
 }
 
 jQuery(document).ready(function(){
 
-	jQuery("a.fancy-edit").fancybox({ 'overlayShow' : false, 'hideOnOverlayClick' : false, 'hideOnContentClick' : false, 'width' : 500, 'height' : 600, 'autoDimensions':false, 'autoScale': false }); 
+	jQuery("a.fancy-edit").fancybox({ 'overlayShow': false, 'hideOnOverlayClick': false, 'hideOnContentClick': false, 'width': 500, 'height': 600, 'autoDimensions': false, 'autoScale': false }); 
 	
 	// Tabs for facts on show project page
 	jQuery('#show_new').click(function(){
