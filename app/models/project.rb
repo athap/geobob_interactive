@@ -133,11 +133,11 @@ class Project < ActiveRecord::Base
     Zip::ZipFile.open(zip_file_path, Zip::ZipFile::CREATE) do |zip_file|
       
       # Add data files
-      facts_for_zip(zip_file, 'annotations.js')
+      project_for_zip(zip_file, 'project.js')
       tags_for_zip(zip_file, 'category.js')
 
       app_maps.each do |map|
-        map.facts_for_zip(zip_file, "map_#{map.id}_annotations.js")
+        map.facts_for_zip(zip_file, "map_#{map.id}_project.js")
         map.tags_for_zip(zip_file, "map_#{map.id}_category.js")
       end
       
