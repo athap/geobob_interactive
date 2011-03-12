@@ -13,6 +13,7 @@
           <% end -%>
           <%= f.hidden_field :tag_list, { :class => 'tag_list' }  -%>
         </li>
+        <li><a id="gpsrs-iphone-trigger" href="#">Add Template</a></li>
         <%= f.input :content, :as => 'text' %>
         <%= f.input :photo, :label => 'Upload Image', :as => 'file' %>
         <p>The field can be 400 feet wide and 276 feet wide. Specify a North/South from -200 to +200 and an East/West offset from -138 to + 138</p>
@@ -45,5 +46,9 @@
     </div>
   </div>
 </div>
-
+<div id="gpsrs-iphone-template" style="display:none;">
+  <div>
+    This is a template
+  </div>
+</div>
 

@@ -42,5 +42,10 @@ jQuery(document).ready(function() {
   jQuery('#fact_content').live('keyup', function(){
     jQuery('#gpsrs-preview').html(jQuery(this).val());
   });
+  jQuery('#gpsrs-iphone-trigger').live('click', function(){
+    jQuery('#fact_content').val(jQuery('#gpsrs-iphone-template').html());
+    jQuery('#fact_content').keyup();
+    return false;
+  });
 });
 </script>
