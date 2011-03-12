@@ -179,7 +179,7 @@ a:hover{color:#70b7ff;font-family:Arial,Helvetica,sans-serif;font-weight:bold;te
 .gpsrs-fact h3{text-shadow:none;}
 a.gpsrs-view{cursor:pointer;}
 #project-content .gpsrs-form label,
-#fancybox-inner  .gpsrs-form label{width:150px;font-size:1.2em;}
+#fancybox-inner  .gpsrs-form label{width:160px;font-size:1.2em;}
 #project-content .gpsrs-form .number,
 #fancybox-inner .gpsrs-form .number{width:60px;}
 #gpsrs-points-control{width:338px;margin:10px 0;}
