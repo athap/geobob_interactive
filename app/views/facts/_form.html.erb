@@ -26,7 +26,7 @@ mce_id = "#{prefix}_mce_content"
   <%= f.hidden_field :tag_list, { :class => 'tag_list' }  -%>
   <%= hidden_field_tag :factable_id, factable.id if factable %>
   <%= hidden_field_tag :factable_type, factable.type if factable %>
-  <%= f.file_field :photo, { :label => 'Upload photo' } %>
+  <%= f.file_field :photo, { :label => 'Upload Image' } %>
   <div class="submits clearfix form-item">
     <div class="waiting" style="display:none;">Please Wait</div>
     <%= f.submit 'Save', :class => 'submit_wait submit_fact' %>
