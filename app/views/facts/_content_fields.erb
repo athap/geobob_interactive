@@ -1,0 +1,7 @@
+<li id="<%= f.object.dom_id if f.object %>">
+  <%= f.label :content, "Content" %>
+  <%= remove_child_link "remove", f %>
+  <a class="gpsrs-iphone-trigger" href="#">Add Template</a>
+  <br />
+  <%= f.text_area :content, :rows => 3, :class => 'fact-content' %>
+</li>

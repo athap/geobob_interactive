@@ -4,6 +4,7 @@
       <div id="messages-container">
         <%= output_errors('Please correct the following errors:', {:class => 'help-box'}, @fact) %>
       </div>
+      <div id="ajax-messages-container"></div>
       <%= f.inputs do %>
         <%= f.input :title, :label => 'Title' -%>
         <li>
@@ -13,18 +14,30 @@
           <% end -%>
           <%= f.hidden_field :tag_list, { :class => 'tag_list' }  -%>
         </li>
-        <li><a id="gpsrs-iphone-trigger" href="#">Add Template</a></li>
-        <%= f.input :content, :as => 'text' %>
+        <li>
+          <%= f.label :content, "Main Content" %>
+          <a class="gpsrs-iphone-trigger" href="#">Add Template</a>
+          <%= f.text_area :content, :class => 'fact-content' %>
+        </li>
         <%= f.input :photo, :label => 'Upload Image', :as => 'file' %>
-        <p>The field can be 400 feet wide and 276 feet wide. Specify a North/South from -200 to +200 and an East/West offset from -138 to + 138</p>
+        <li><p>The field can be 400 feet wide and 276 feet wide. Specify a North/South from -200 to +200 and an East/West offset from -138 to + 138</p></li>
         <%= f.input :vertical_offset, :input_html => { :class => 'number' }, :label => 'North/South offset' %>
         <%= f.input :horizontal_offset, :input_html => { :class => 'number' }, :label => 'East/West offset' %>
       <% end -%>
 
+      <div id="child-content">
+        <ul id="content-list">
+          <%= f.semantic_fields_for :contents do |q| -%>
+            <%= render :partial => "facts/content_fields", :locals => { :f => q } %>
+          <% end -%>
+          <div id="add-child-content"><%= add_child_link "Add Content", f, :contents %></div>
+        </ul>
+      </div>
+      
       <div id="questions">
         <%= f.semantic_fields_for :questions do |q| %>
           <%= render :partial => "facts/question_fields", :locals => { :f => q } %>
-        <% end %>
+        <% end -%>
         <div><%= add_child_link "Add Question", f, :questions %></div>
       </div>
   
@@ -46,7 +59,7 @@
     </div>
   </div>
 </div>
-<div id="gpsrs-iphone-template" style="display:none;">
+<div class="gpsrs-iphone-template" style="display:none;">
   <div>
     <div>
       <div>
@@ -69,3 +82,12 @@
   </div>
 </div>
 
+<script type="text/javascript" language="JavaScript">
+  jQuery(document).ready(function() {
+    <% if @fact.new_record? -%>
+      apply_content_sort('', false);
+    <% else -%>
+      apply_content_sort('<%= sort_fact_contents_path(@fact) %>', true);
+    <% end -%>
+  });
+</script>

@@ -202,3 +202,9 @@ a.gpsrs-view{cursor:pointer;}
 .answer .title a{font-size:12px;}
 .answer ul li{margin-left:20px;}
 #project-content .gpsrs-form .answer label{width:150px;}
+
+/*contents*/
+#child-content li{margin:3px 0;}
+#child-content li.fact_child-content label{width:70px;}
+#child-content li.fact_child-content a{font-size:11px;}
+#add-child-content{margin:10px 0;}

@@ -39,13 +39,17 @@
 <script type="text/javascript">
 jQuery(document).ready(function() {
   apply_fancy_gpsrs();
-  jQuery('#fact_content').live('keyup', function(){
+  jQuery('.fact-content').live('keyup', function(){
     jQuery('#gpsrs-preview').html(jQuery(this).val());
   });
-  jQuery('#gpsrs-iphone-trigger').live('click', function(){
-    jQuery('#fact_content').val(jQuery('#gpsrs-iphone-template').html());
-    jQuery('#fact_content').keyup();
-    return false;
+  jQuery('.fact-content').live('click', function(){
+    jQuery('#gpsrs-preview').html(jQuery(this).val());
   });
+  jQuery('.gpsrs-iphone-trigger').live('click', function(){
+    var textarea = jQuery(this).parent().find('textarea');
+    textarea.val(jQuery('.gpsrs-iphone-template').html());
+    textarea.keyup();
+    return false;
+  });  	
 });
 </script>

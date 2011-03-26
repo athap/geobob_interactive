@@ -73,6 +73,7 @@ class ProjectsController < ApplicationController
         @fact = Fact.new
       end
       @fact.add_default_questions
+      @fact.add_default_contents
     end
   end
   

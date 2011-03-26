@@ -5,12 +5,16 @@ class Fact < ActiveRecord::Base
   
   validates_presence_of :title
   #validates_presence_of :location
-  validates_presence_of :content
+  #validates_presence_of :content
   validates_presence_of :factable
   
   belongs_to :factable, :polymorphic => true
   acts_as_mappable
   acts_as_taggable
+  
+  has_many :contents, :dependent => :destroy, :order => 'position ASC'
+  
+  accepts_nested_attributes_for :contents, :reject_if => lambda { |a| a['content'].blank? }, :allow_destroy => true
   
   has_many :questions, :dependent => :destroy
   accepts_nested_attributes_for :questions, :reject_if => lambda { |a| a['content'].blank? }, :allow_destroy => true
@@ -23,7 +27,7 @@ class Fact < ActiveRecord::Base
                                  :default_url => "http://www.google.com/mapfiles/marker.png"
   
   attr_accessible :title, :subtitle, :horizontal_offset, :content, :vertical_offset, :latitude, :longitude, 
-                  :pincolor, :animate, :rightButton, :mapButton, :homepage, :image, :category, :questions_attributes, :tag_list
+                  :pincolor, :animate, :rightButton, :mapButton, :homepage, :image, :category, :questions_attributes, :tag_list, :contents_attributes
   
   aasm_initial_state :new
 
@@ -44,6 +48,12 @@ class Fact < ActiveRecord::Base
       4.times { question.answers.build }
     end
   end  
+  
+  def add_default_contents
+    1.times do
+      self.contents.build
+    end
+  end
   
   def categories
     categories = self.tags.collect{ |tag| tag.name }
@@ -133,7 +143,9 @@ class Fact < ActiveRecord::Base
       :category => category,
       :vertical_offset => vertical_offset,
       :horizontal_offset => horizontal_offset,
-      :questions => self.questions.includes(:answers).collect{|q| q.json_hash} }
+      :questions => self.questions.includes(:answers).collect{|q| q.json_hash},
+      :contents => self.contents.by_position.collect{|c| c.json_hash} 
+    }
   end
   
 end

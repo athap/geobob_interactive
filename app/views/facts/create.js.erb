@@ -13,8 +13,8 @@ jQuery('.submit_wait').show();
 		infowindow.open(map, markers['<%=@fact.dom_id%>']);
 		applyEditor();
 		paletteControl.shutDownKillMarker();
-		jQuery.fancybox.close();
 	<% end -%>
+	jQuery.fancybox.close();
 <% else -%>
-	<%= output_errors_ajax('messages-container', 'Please correct the following errors:', {:class => 'help-box'}, @fact, true) %>
+	<%= output_errors_ajax('ajax-messages-container', 'Please correct the following errors:', {:class => 'help-box'}, @fact, true) %>
 <% end -%>

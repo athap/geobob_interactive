@@ -17,7 +17,12 @@ Geobob::Application.routes.draw do
     resources :users
   end
   
-  resources :facts
+  resources :facts do
+    resources :contents do
+      post :sort, :on => :collection
+    end
+  end
+  
   resources :projects do
     resources :facts do
       post :sort, :on => :collection

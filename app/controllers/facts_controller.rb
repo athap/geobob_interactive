@@ -30,7 +30,11 @@ class FactsController < ApplicationController
   def new
     @factable = @parent
     @fact = @parent.facts.new
-    setup_project_layout
+    setup_project_layout    
+    if @project.project_layout.view == 'gpsrs'
+      @fact.add_default_questions
+      @fact.add_default_contents
+    end
     respond_to do |format|
       format.html
       format.js do
@@ -112,7 +116,9 @@ class FactsController < ApplicationController
   
   protected
     def truncate_fact(fact)
-      "#{ActionController::Base.helpers.strip_tags(fact.content)[0...30]} ..."
+      content = fact.content || fact.contents.first
+      return '' if content.blank?
+      "#{ActionController::Base.helpers.strip_tags(content)[0...30]} ..."
     end
 
     def setup_project_layout

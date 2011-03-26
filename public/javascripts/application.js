@@ -209,6 +209,32 @@ function apply_fact_sort(url){
 	}).disableSelection();	
 }
 
+function apply_content_sort(url, update_server){
+	var update = null;
+	
+	if(update_server){
+		update = function(event, ui) {
+			jQuery.ajax({
+          type: 'post',
+          data: jQuery('#content-list').sortable('serialize'),
+          dataType: 'script',
+          complete: function(request) {
+          	jQuery('#content-list').effect('highlight');
+          },
+          url: url
+      });
+		}
+	}
+	
+	jQuery("#content-list").sortable({
+		axis: 'y',
+		opacity: 0.4,
+		scroll: true,
+    update: update 
+  }).disableSelection();
+
+}
+
 function apply_icon_dnd() {
   var $drop = jQuery('#select-icons-drop');
   var $drop_delete = jQuery('#select-icons-delete');

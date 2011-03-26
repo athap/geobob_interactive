@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110211161452) do
+ActiveRecord::Schema.define(:version => 20110326170156) do
 
   create_table "access_code_requests", :force => true do |t|
     t.string   "email"
@@ -86,6 +86,16 @@ ActiveRecord::Schema.define(:version => 20110211161452) do
     t.string   "icon_content_type"
     t.integer  "icon_file_size"
   end
+
+  create_table "contents", :force => true do |t|
+    t.integer  "fact_id"
+    t.text     "content"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "contents", ["fact_id"], :name => "index_contents_on_fact_id"
 
   create_table "facts", :force => true do |t|
     t.text     "content"
