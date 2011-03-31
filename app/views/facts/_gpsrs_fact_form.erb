@@ -60,25 +60,35 @@
   </div>
 </div>
 <div class="gpsrs-iphone-template" style="display:none;">
-  <div>
-    <div>
-      <div>
-      </div>
-      <div>
-        <div align="center"><img width="242" height="144" src="http://ContentImage.jpg">
-        </div>
-      </div>
-      <div>
-      </div>
-      <div>
-        <div>
-          <p>Place Text Here</p>
-          <p>Place Text Here</p>
-        </div>
-      </div>
-      <div>
+  <style type="text/css">
+  /* <![CDATA[ */
+  .style01{color:#FFFFFF;font-family:Arial,Helvetica,sans-serif;font-size:16px;}
+  body{margin:0;padding:0;font-size:16;font-family:sans-serif;}
+  #container{/* Replace "ContentBackground001.jpg" with your own background image. */
+  background-image:url(ContentBackground001.jpg);width:320px;height:350px;padding:0;border:0;overflow:hidden;}
+  #header{width:320px;height:18px;padding:0;border:0;overflow:hidden;}
+  #footer{width:320px;height:30px;padding:0;}
+  #text{width:244px;height:130px;padding:0;overflow:hidden;margin:10px 38px 10px 38px}
+  #content01{width:320px;height:144px;padding:0;overflow:hidden;}
+  #content02{width:320px;height:138px;padding:0;overflow:hidden;}
+  #divider{width:320px;height:26px;padding:0;}
+  /* ]]> */
+  </style>
+  <div id="container">
+    <div id="header"></div>
+    <div id="content01">
+      <!--Replace "ContentImage.jpg" here with your own image. -->
+      <div align="center"><img width="242" height="144" src="ContentImage.jpg"></div>
+    </div>
+    <div id="divider"></div>
+    <div id="content02">
+      <div id="text" class="style01">
+        <!--Replace "Place Text Here" with your own text. -->
+        <p>Place Text Here</p>
+        <p>Place Text Here</p>
       </div>
     </div>
+    <div id="footer"></div>
   </div>
 </div>
 
