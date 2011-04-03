@@ -33,13 +33,6 @@
           <div id="add-child-content"><%= add_child_link "Add Content", f, :contents %></div>
         </ul>
       </div>
-      
-      <div id="questions">
-        <%= f.semantic_fields_for :questions do |q| %>
-          <%= render :partial => "facts/question_fields", :locals => { :f => q } %>
-        <% end -%>
-        <div><%= add_child_link "Add Question", f, :questions %></div>
-      </div>
   
       <%= hidden_field_tag :factable_id, @project.id %>
       <%= hidden_field_tag :factable_type, @project.type %>
@@ -95,9 +88,9 @@
 <script type="text/javascript" language="JavaScript">
   jQuery(document).ready(function() {
     <% if @fact.new_record? -%>
-      apply_content_sort('', false);
+      apply_content_methods('', false);
     <% else -%>
-      apply_content_sort('<%= sort_fact_contents_path(@fact) %>', true);
+      apply_content_methods('<%= sort_fact_contents_path(@fact) %>', true);
     <% end -%>
   });
 </script>

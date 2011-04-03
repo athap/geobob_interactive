@@ -42,4 +42,12 @@ module ProjectsHelper
     %Q{style="top:#{v}px;left:#{h}px;"}
   end
   
+  def content_is_question_css(content)
+    if content.is_question?
+      'display:block;'
+    else
+      'display:none;'
+    end
+  end
+  
 end

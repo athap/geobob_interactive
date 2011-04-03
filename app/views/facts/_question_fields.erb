@@ -3,7 +3,7 @@
   <div>
     <%= f.label :content, "Question" %>
     <%= remove_child_link "remove", f %><br />
-    <%= f.text_area :content, :rows => 3 %>
+    <%= f.input :content, :rows => 3 %>
   </div>
   <%= f.semantic_fields_for :answers do |a| %>
     <%= render 'facts/answer_fields', :f => a %>

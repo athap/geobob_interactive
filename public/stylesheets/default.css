@@ -179,7 +179,7 @@ a:hover{color:#70b7ff;font-family:Arial,Helvetica,sans-serif;font-weight:bold;te
 .gpsrs-fact h3{text-shadow:none;}
 a.gpsrs-view{cursor:pointer;}
 #project-content .gpsrs-form label,
-#fancybox-inner  .gpsrs-form label{width:160px;font-size:1.2em;}
+#fancybox-inner  .gpsrs-form label{width:160px;font-size:12px;}
 #project-content .gpsrs-form .number,
 #fancybox-inner .gpsrs-form .number{width:60px;}
 #gpsrs-points-control{width:338px;margin:10px 0;}
@@ -189,8 +189,9 @@ a.gpsrs-view{cursor:pointer;}
 /*gpsrs popup*/
 #gpsrs-editor-leftcolumn{float:left;height:100%;position:relative;width:620px;}
 #gpsrs-editor-rightcolumn{float:left;height:100%;position:relative;width:340px;}
-#gpsrs-editor-popup{width:960px;}
+#gpsrs-editor-popup{width:980px;}
 #gpsrs-editor-popup #fact_content{width:95%;}
+#gpsrs-editor-popup .content-container{margin:4px;padding:4px;background-color:#eee;border:solid 1px #444;}
 
 /*facts*/
 #sort-facts-container{width:480px;height:580px;}

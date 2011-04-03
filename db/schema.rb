@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110326170156) do
+ActiveRecord::Schema.define(:version => 20110403053635) do
 
   create_table "access_code_requests", :force => true do |t|
     t.string   "email"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(:version => 20110326170156) do
   add_index "access_codes", ["code"], :name => "index_access_codes_on_code"
 
   create_table "answers", :force => true do |t|
-    t.integer  "question_id"
+    t.integer  "content_id"
     t.string   "content"
     t.boolean  "correct"
     t.datetime "created_at"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(:version => 20110326170156) do
     t.string   "incorrect_feedback"
   end
 
-  add_index "answers", ["question_id"], :name => "index_answers_on_question_id"
+  add_index "answers", ["content_id"], :name => "index_answers_on_question_id"
 
   create_table "app_feeds", :force => true do |t|
     t.string   "title"
@@ -90,12 +90,13 @@ ActiveRecord::Schema.define(:version => 20110326170156) do
   create_table "contents", :force => true do |t|
     t.integer  "fact_id"
     t.text     "content"
-    t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position"
+    t.string   "category"
   end
 
-  add_index "contents", ["fact_id"], :name => "index_contents_on_fact_id"
+  add_index "contents", ["fact_id"], :name => "index_questions_on_fact_id"
 
   create_table "facts", :force => true do |t|
     t.text     "content"
@@ -167,15 +168,6 @@ ActiveRecord::Schema.define(:version => 20110326170156) do
     t.string   "background_image_content_type"
     t.string   "background_image_file_size"
   end
-
-  create_table "questions", :force => true do |t|
-    t.integer  "fact_id"
-    t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "questions", ["fact_id"], :name => "index_questions_on_fact_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"

@@ -1,7 +1,23 @@
-<li id="<%= f.object.dom_id if f.object %>" class="fields">
-  <%= f.label :content, "Content" %>
-  <%= remove_child_link "Remove", f %>
-  <a class="gpsrs-iphone-trigger" href="#">Add Template</a>
-  <br />
-  <%= f.text_area :content, :rows => 3, :class => 'fact-content' %>
+<li id="<%= f.object.dom_id if f.object %>" class="fields content-container">
+  <ul>
+    <li>
+      <%= f.label :content, "Content" %>
+      <%= remove_child_link "Remove", f %>
+      <a class="gpsrs-iphone-trigger" href="#">Add Template</a>
+    </li>
+    <li>
+      <%= f.label :category, "Content Category" %>
+      <%= f.select :category, Content.categories, {:include_blank => false}, :class => 'content-category-select' %>
+    </li>                         
+    <li><%= f.text_area :content, :rows => 3, :class => 'fact-content' %></li>
+    <li style="<%=content_is_question_css(f.object)%>" class="content-answers-container">
+      <a href="#" class="content-answers-toggle">Show Answers</a>
+      <div style="display:none;" class="content-answers">
+        <%= f.semantic_fields_for :answers do |a| %>
+          <%= render 'facts/answer_fields', :f => a %>
+        <% end %>
+        <div><%= add_child_link "Add Answer", f, :answers %></div>
+      </div>
+    </li>
+  </ul>
 </li>

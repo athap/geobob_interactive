@@ -16,9 +16,6 @@ class Fact < ActiveRecord::Base
   
   accepts_nested_attributes_for :contents, :reject_if => lambda { |a| a['content'].blank? }, :allow_destroy => true
   
-  has_many :questions, :dependent => :destroy
-  accepts_nested_attributes_for :questions, :reject_if => lambda { |a| a['content'].blank? }, :allow_destroy => true
-  
   has_attached_file :photo, 
                     :styles => { :medium => "300x300>",
                                  :thumb => "100x100>",
@@ -27,7 +24,7 @@ class Fact < ActiveRecord::Base
                                  :default_url => "http://www.google.com/mapfiles/marker.png"
   
   attr_accessible :title, :subtitle, :horizontal_offset, :content, :vertical_offset, :latitude, :longitude, 
-                  :pincolor, :animate, :rightButton, :mapButton, :homepage, :image, :category, :questions_attributes, :tag_list, :contents_attributes
+                  :pincolor, :animate, :rightButton, :mapButton, :homepage, :image, :category, :tag_list, :contents_attributes
   
   aasm_initial_state :new
 
@@ -44,14 +41,14 @@ class Fact < ActiveRecord::Base
   
   def add_default_questions
     1.times do
-      question = self.questions.build
+      question = self.contents.build(:category => 'question')
       4.times { question.answers.build }
     end
   end  
   
   def add_default_contents
     1.times do
-      self.contents.build
+      self.contents.build(:category => 'content')
     end
   end
   
@@ -143,8 +140,8 @@ class Fact < ActiveRecord::Base
       :category => category,
       :vertical_offset => vertical_offset,
       :horizontal_offset => horizontal_offset,
-      :questions => self.questions.includes(:answers).collect{|q| q.json_hash},
-      :contents => self.contents.by_position.collect{|c| c.json_hash} 
+      :questions => self.contents.only_questions.by_position.includes(:answers).collect{|c| c.json_hash},
+      :contents => self.contents.only_contents.by_position.collect{|c| c.json_hash} 
     }
   end
   

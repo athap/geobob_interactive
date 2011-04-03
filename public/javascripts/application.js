@@ -209,7 +209,7 @@ function apply_fact_sort(url){
 	}).disableSelection();	
 }
 
-function apply_content_sort(url, update_server){
+function apply_content_methods(url, update_server){
 	var update = null;
 	
 	if(update_server){
@@ -233,6 +233,29 @@ function apply_content_sort(url, update_server){
     update: update 
   }).disableSelection();
 
+
+	jQuery('select.content-category-select').live('change', function(){
+	  var select = jQuery(this);
+		var content_answers_container = select.parents('li').siblings('li.content-answers-container');
+	  if(select.val() == 'question'){
+	    content_answers_container.show();
+	  } else {
+			content_answers_container.hide();
+		}
+	});
+	
+	jQuery('.content-answers-toggle').live('click', function(){
+		var link = jQuery(this);
+		var answers = link.siblings('.content-answers');		
+		if(link.html() == 'Hide Answers'){
+			link.html('Show Answers');
+			answers.hide();
+		} else {
+			answers.show();
+			link.html('Hide Answers');
+		}
+	});
+	
 }
 
 function apply_icon_dnd() {
