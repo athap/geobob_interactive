@@ -14,11 +14,6 @@
           <% end -%>
           <%= f.hidden_field :tag_list, { :class => 'tag_list' }  -%>
         </li>
-        <li>
-          <%= f.label :content, "Main Content" %>
-          <a class="gpsrs-iphone-trigger" href="#">Add Template</a>
-          <%= f.text_area :content, :class => 'fact-content' %>
-        </li>
         <%= f.input :photo, :label => 'Upload Image', :as => 'file' %>
         <li><p>The field can be 400 feet wide and 276 feet wide. Specify a North/South from -200 to +200 and an East/West offset from -138 to + 138</p></li>
         <%= f.input :vertical_offset, :input_html => { :class => 'number' }, :label => 'North/South offset' %>

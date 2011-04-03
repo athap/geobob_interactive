@@ -1,10 +1,10 @@
 class Answer < ActiveRecord::Base
   belongs_to :content
-  attr_accessible :content, :correct, :correct_feedback, :incorrect_feedback
+  attr_accessible :answer, :correct, :correct_feedback, :incorrect_feedback
   
   def json_hash
     {
-      :content => self.content,
+      :answer => self.answer,
       :correct => self.correct,
       :correct_feedback => self.correct_feedback,
       :incorrect_feedback => self.incorrect_feedback

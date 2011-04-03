@@ -50,11 +50,11 @@ class FactsController < ApplicationController
     @gprs = true if params[:spatial]
     @fact.set_lat_lng_from_location unless @gprs # WARNING set_lat_lng_from_location  gelocates addresses.  Even if you give it a lat,lng it will find the nearest valid address
     if @success = @fact.save
-      @message = "#{truncate_fact(@fact)} successfully created."
+      @message = "Successfully created."
       @categories = @fact.categories
     else
       if @fact.content
-        @message = "There was a problem adding #{truncate_fact(@fact)}"
+        @message = "There was a problem adding the fact"
       else
         @message = "There was a problem adding your information"
       end
@@ -115,11 +115,6 @@ class FactsController < ApplicationController
   end
   
   protected
-    def truncate_fact(fact)
-      content = fact.content || fact.contents.first
-      return '' if content.blank?
-      "#{ActionController::Base.helpers.strip_tags(content)[0...30]} ..."
-    end
 
     def setup_project_layout
       if @factable && @factable.respond_to?(:project_layout)

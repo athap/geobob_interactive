@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(:version => 20110403053635) do
 
   create_table "answers", :force => true do |t|
     t.integer  "content_id"
-    t.string   "content"
+    t.string   "answer"
     t.boolean  "correct"
     t.datetime "created_at"
     t.datetime "updated_at"

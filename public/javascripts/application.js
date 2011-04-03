@@ -247,13 +247,14 @@ function apply_content_methods(url, update_server){
 	jQuery('.content-answers-toggle').live('click', function(){
 		var link = jQuery(this);
 		var answers = link.siblings('.content-answers');		
-		if(link.html() == 'Hide Answers'){
+		if(answers.is(":visible")){
 			link.html('Show Answers');
 			answers.hide();
 		} else {
 			answers.show();
 			link.html('Hide Answers');
 		}
+		return false;
 	});
 	
 }
