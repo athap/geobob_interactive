@@ -90,7 +90,7 @@ class ProjectTest < ActiveSupport::TestCase
       @project = Factory(:project)
       @fact1 = Factory(:fact, :project => @project)
       @fact2 = Factory(:fact, :project => @project)
-      @path = File.join(RAILS_ROOT, 'tmp')
+      @path = File.join(::Rails.root.to_s, 'tmp')
     end
     it "should export zip file" do
       zip_file_path = @project.zip(@path)
