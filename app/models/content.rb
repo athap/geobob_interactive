@@ -4,8 +4,8 @@ class Content < ActiveRecord::Base
   accepts_nested_attributes_for :answers, :reject_if => lambda { |a| a['answer'].blank? }, :allow_destroy => true
   attr_accessible :content, :answers_attributes, :position, :category
   scope :by_position, :order => "position ASC, id ASC"
-  scope :only_questions, :where => "category == 'question'"
-  scope :only_contents, :where => "category == 'content'"
+  scope :only_questions, where(:category => 'question')
+  scope :only_contents, where(:category => 'content')
   
   before_create :set_position, :set_category
   
