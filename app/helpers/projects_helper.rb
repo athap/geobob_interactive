@@ -37,7 +37,7 @@ module ProjectsHelper
   def calculate_gpsrs_position(fact)
     v = fact.vertical_offset || 0
     h = fact.horizontal_offset || 0
-    v = v + 200 # Screen is 400 px tall. Adding 200 starts us in the center
+    v = 200 - v # Screen is 400 px tall. Adding 200 starts us in the center. We want North to be up so we subtract
     h = h + 138 # 276 wide. 138 starts us in the center
     %Q{style="top:#{v}px;left:#{h}px;"}
   end
