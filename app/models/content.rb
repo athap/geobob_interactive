@@ -30,6 +30,7 @@ class Content < ActiveRecord::Base
     if self.is_question?
       h[:answers] = self.answers.collect{|a| a.json_hash}
     end
+    h
   end
   
   def is_question?
