@@ -1,0 +1,13 @@
+Deploy geobob with:
+  
+  cap production deploy
+  
+If Bundler is unable to install gems then you need to ssh into the server as bob:
+
+  ssh bob@geobobapp.usu.edu
+  
+then make a call as super user so that user bob can make the needed calls to install gems:
+  
+  sudo ls
+  
+It's a hack but it works.
