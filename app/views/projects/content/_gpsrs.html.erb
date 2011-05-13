@@ -33,7 +33,7 @@
 </div>
 <div id="author_rightcolumn">
   <div class="content-iPhone">
-    <div id="gpsrs-points-container" <%= app_background(@project).html_safe %>>
+    <div id="gpsrs-points-container" class="points-container" <%= app_background(@project).html_safe %>>
       <%= render :partial => 'facts/gpsrs_fact', :collection => @project.facts, :as => :fact %>
     </div>
   </div>
