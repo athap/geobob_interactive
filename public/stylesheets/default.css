@@ -146,7 +146,7 @@ a:hover{color:#70b7ff;font-family:Arial,Helvetica,sans-serif;font-weight:bold;te
 .step1_left{width:80%;float:left;}
 .step1_right{float:left;width:20%;}
 
-.content-iPhone{border:solid 1px #000;}
+.content-iPhone{}
 .content-iPhone #app-icons-drop{margin-left:31px;background-color:#fff;} 
 .content-iPhone #app-icons-drop .icon{float:left;width:82px;height:82px;text-align:center;display:inline-block;margin:5px;position:relative;}
 .content-iPhone #app-icons-drop .icon .delete{position:absolute;top:-7px;right:-7px;display:none;}
@@ -175,7 +175,7 @@ a:hover{color:#70b7ff;font-family:Arial,Helvetica,sans-serif;font-weight:bold;te
 .tag-icon img{float:left;}
 
 /*project content -gpsrs*/
-.gpsrs-fact-dot{position:absolute;width:10px;height:10px;z-index:1000;}
+.gpsrs-fact-dot{position:absolute;width:60px;height:10px;z-index:1000;}
 .gpsrs-fact{position:absolute;}
 .gpsrs-fact h3{text-shadow:none;}
 a.gpsrs-view{cursor:pointer;}
@@ -186,10 +186,10 @@ a.gpsrs-view{cursor:pointer;}
 #gpsrs-points-control{width:338px;margin:10px 0;}
 #gpsrs-points-container,
 #gpsrs-preview{position:relative;background-color:#fff;}
-
+#gpsrs-points-container{border:solid 1px red;}
 .gpsrs-project-basic-settings .inputs label{width:70px;}
 form.gpsrs-project-basic-settings fieldset.inputs input[type="text"]{width:50px;}
-
+.gpsrs-fact-dot-container{width:10px;height:10px;}
 
 /*gpsrs popup*/
 #gpsrs-editor-leftcolumn{float:left;height:100%;position:relative;width:620px;}

@@ -209,6 +209,31 @@ function apply_fact_sort(url){
 	}).disableSelection();	
 }
 
+function make_gpsrs_dots_dnd(){
+	jQuery(".gpsrs-fact-dot-container").draggable();
+	jQuery("#gpsrs-points-container").droppable({
+		accept: ".gpsrs-fact-dot-container",
+		drop: function(event, ui){
+			var pos = ui.draggable.position();
+			var width = jQuery('#gpsrs-points-container').width();
+			var height = jQuery('#gpsrs-points-container').height();
+      var vertical_offset = (height/2) - pos.top;
+      var horizontal_offset = pos.left - (width/2);		
+			var fact_id = ui.draggable.children('.fact_id').val();
+			var url = '/facts/' + fact_id;
+			jQuery.ajax({
+          type: 'put',
+          data: {'vertical_offset':vertical_offset, 'horizontal_offset':horizontal_offset},
+          dataType: 'script',
+          complete: function(request){
+						// Use to debug as needed
+					},
+          url: url
+      });
+		}
+	});
+}
+
 function apply_content_methods(url, update_server){
 	var update = null;
 	

@@ -1,8 +1,6 @@
-<div id="<%=fact.dom_id%>">
-  <div id="<%=fact.dom_id%>_dot" class="gpsrs-fact-dot" <%=calculate_gpsrs_position(fact).html_safe%> >
-    <a href="<%=edit_fact_path(fact)%>" class="gpsrs-view fancy-gpsrs"><img src="<%= fact.icon -%>" alt="Icon for fact" /></a>
+<div id="<%=fact.dom_id%>" class="gpsrs-fact-dot-container" <%=calculate_gpsrs_position(fact).html_safe%>>
+  <div id="<%=fact.dom_id%>_dot" class="gpsrs-fact-dot">
+    <img src="<%= fact.icon -%>" alt="Icon for fact" /><a href="<%=edit_fact_path(fact)%>" class="gpsrs-view fancy-gpsrs"><%=fact.position%>. <%= fact.title[0..4] %></a>
   </div>
-  <div id="<%=fact.dom_id%>_content" class="gpsrs-fact" <%=calculate_gpsrs_position(fact).html_safe%>>
-    <h3 class="fact-title"><a href="<%=edit_fact_path(fact)%>" class="gpsrs-view fancy-gpsrs"><%=fact.position%>. <%= fact.title %></a></h3>
-  </div>
+  <input type="hidden" value="<%=fact.id%>" class="fact_id">
 </div>

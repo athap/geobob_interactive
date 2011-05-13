@@ -80,7 +80,11 @@ class FactsController < ApplicationController
   
   def update
     @fact = Fact.find(params[:id])
-    if params[:lat] && params[:lng]
+    if params[:horizontal_offset] && params[:vertical_offset]
+      @full_update = false
+      @gpsrs = true
+      success = @fact.update_attributes(:horizontal_offset => params[:horizontal_offset], :vertical_offset => params[:vertical_offset])
+    elsif params[:lat] && params[:lng]
       @full_update = false
       success = @fact.update_attributes(:lat => params[:lat], :lng => params[:lng])
     else

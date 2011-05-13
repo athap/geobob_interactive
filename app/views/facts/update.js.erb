@@ -3,6 +3,7 @@
 	jQuery('#<%=@fact.dom_id%>').replaceWith(decodeHtml(fact_content));
 	jQuery.fancybox.close();
 	apply_fancy_gpsrs();
+	make_gpsrs_dots_dnd();
 <% else -%>
 	function markerCleanup(){
 		var old_marker = markers['<%=@fact.dom_id%>'];

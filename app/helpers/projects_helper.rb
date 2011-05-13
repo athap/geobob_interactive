@@ -42,7 +42,7 @@ module ProjectsHelper
     h = fact.horizontal_offset || 0
     v = height - v
     h = h + width
-    %Q{style="top:#{v}px;left:#{h}px;"}
+    %Q{style="top:#{v}px;left:#{h}px;position:absolute;"}
   end
   
   def content_is_question_css(content)
