@@ -30,14 +30,15 @@ label{font-size:1em;}
 .common-content{width:500px;margin:40px auto;font-size:1.2em;color:#555;}
 .button-link {background-color:transparent;border-top-width: 0px;border-left-width: 0px;border-right-width: 0px;border-bottom-width: 0px;}
 
-form.formtastic input{margin:0 10px 5px 0;padding:4px;font-size:1.3em;}
+form.formtastic input{margin:0 10px 5px 0;padding:4px;font-size:1em;}
 form.formtastic input[type="text"],input[type="password"]{border:1px solid #8f8685;}
 form.formtastic input[type="checkbox"]{border:none;margin-bottom:0px;}
 form.formtastic input[type="radio"]{border:none;}
-form.formtastic textarea{font-size:1.4em;margin:0 10px 0 0;padding:4px;border:1px solid #8f8685;height:200px;}
-form.formtastic label{font-size:1.5em;font-weight:bold;margin:0 10px 5px 0;padding:0px;display:inline-block;}
+form.formtastic textarea{font-size:1em;margin:0 10px 0 0;padding:4px;border:1px solid #8f8685;height:200px;}
+form.formtastic label{font-size:1em;font-weight:bold;margin:0 10px 5px 0;padding:0px;display:inline-block;}
 form.formtastic em{color:#b61e12;font-style:normal;font-size:90%;}
 form.formtastic hr{border:1px solid #e3e0c3;height:1px;margin:15px 0;}
+form.formtastic ul{list-style:none;}
 form.formtastic ul li { padding:0; border:none; display:list-item;vertical-align:top;}
 fieldset span.var{margin:2px 5px 5px 18px;display:block;}
 fieldset{border:none;margin:0;padding:0;}
@@ -140,13 +141,13 @@ a:hover{color:#70b7ff;font-family:Arial,Helvetica,sans-serif;font-weight:bold;te
 .projects_pic{float:left;height:100%;width:110px;padding:5px;}
 .projects_info{float:left;height:100%;width:80%;padding-top:5px;padding-right:10px;padding-bottom:5px;padding-left:20px;}
 .breadcrumb{height:60px;width:100%;}
-#author_leftcolumn{float:left;height:100%;width:70%;position:relative;}
-#author_rightcolumn{float:left;height:100%;width:30%;position:relative;}
+#author_leftcolumn{float:left;height:100%;width:50%;position:relative;}
+#author_rightcolumn{float:left;height:100%;width:50%;position:relative;}
 .step1_left{width:80%;float:left;}
 .step1_right{float:left;width:20%;}
 
-.content-iPhone{background-image:url("/images/author_imgs/iphone.jpg");width:338px;height:505px;padding:120px 0 0;}
-.content-iPhone #app-icons-drop{height:400px;margin-left:31px;width:276px;background-color:#fff;} 
+.content-iPhone{border:solid 1px #000;}
+.content-iPhone #app-icons-drop{margin-left:31px;background-color:#fff;} 
 .content-iPhone #app-icons-drop .icon{float:left;width:82px;height:82px;text-align:center;display:inline-block;margin:5px;position:relative;}
 .content-iPhone #app-icons-drop .icon .delete{position:absolute;top:-7px;right:-7px;display:none;}
 #app-icons{display:inline-block;width:550px;}
@@ -184,7 +185,11 @@ a.gpsrs-view{cursor:pointer;}
 #fancybox-inner .gpsrs-form .number{width:60px;}
 #gpsrs-points-control{width:338px;margin:10px 0;}
 #gpsrs-points-container,
-#gpsrs-preview{position:relative;height:400px;margin-left:31px;width:276px;background-color:#fff;}
+#gpsrs-preview{position:relative;background-color:#fff;}
+
+.gpsrs-project-basic-settings .inputs label{width:70px;}
+form.gpsrs-project-basic-settings fieldset.inputs input[type="text"]{width:50px;}
+
 
 /*gpsrs popup*/
 #gpsrs-editor-leftcolumn{float:left;height:100%;position:relative;width:620px;}

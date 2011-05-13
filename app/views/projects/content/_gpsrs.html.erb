@@ -2,14 +2,18 @@
   <h6>Step 1: Upload Background</h6>
   <p>Click ‘browse’ to upload a personal picture then drag your background to the phone.</p>
 
-  <%= semantic_form_for @project, :html => { :multipart => true, :class => 'ajax' } do |f| -%>
+  <%= semantic_form_for @project, :html => { :multipart => true, :class => 'ajax gpsrs-project-basic-settings' } do |f| -%>
     <div id="messages-container">
       <%= output_errors('Please correct the following errors:', {:class => 'help-box'}, @project) %>
     </div>
-    <%= f.file_field :background_image, { :label => '<strong>App Background: </strong>(RECOMMENDED: 320 X 480 px JPG at 160 dpi)' } %>
+    <% f.inputs do %>    
+      <%= f.file_field :background_image, { :label => '<strong>App Background: </strong>(Image size should match the size you specify above.)' } %>
+      <%= f.input :width %>
+      <%= f.input :height %>
+    <% end -%>
     <div class="submits clearfix form-item">
       <div class="waiting" style="display:none;">Please Wait</div>
-      <%= f.submit 'Upload', :input_html => { :class => 'submit_wait' } %>
+      <%= f.submit 'Save', :input_html => { :class => 'submit_wait' } %>
       <%= hidden_field_tag :update_app_icons_drop, true %>
     </div>
   <% end -%>
@@ -29,7 +33,7 @@
 </div>
 <div id="author_rightcolumn">
   <div class="content-iPhone">
-    <div id="gpsrs-points-container" <%= app_background(@project) %>>
+    <div id="gpsrs-points-container" <%= app_background(@project).html_safe %>>
       <%= render :partial => 'facts/gpsrs_fact', :collection => @project.facts, :as => :fact %>
     </div>
   </div>

@@ -1,5 +1,6 @@
 <% if params[:update_app_icons_drop] -%>
-	jQuery('#app-icons-drop').attr("style", "<%= app_background(@project, false) %>");
+	jQuery('#app-icons-drop').attr('style', "<%= escape_javascript(app_background(@project, false).html_safe) %>");
+	jQuery('#gpsrs-preview').attr('style', "<%= escape_javascript(app_background(@project, false).html_safe) %>");
 <% elsif !@errors.blank? -%>
 	jQuery('#message').html('<%= @errors %>');
 <% end -%>

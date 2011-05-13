@@ -6,17 +6,22 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 # Setup initial user so we can get in
-if !User.find_by_email('admin@example.com')
-  user = User.create! :name => 'Admin', :email => 'admin@example.com', :password => 'asdfasdf', :password_confirmation => 'asdfasdf'
-  user.confirmed_at = user.confirmation_sent_at
-  user.save
-  Role.create! :name => 'Admin'
-  Role.create! :name => 'Member'
-
-  user1 = User.find_by_email('admin@example.com')
-  user1.role_ids = [1,2]
-  user1.save
+admin_user = User.find_by_email('admin@example.com')
+if !admin_user
+  admin_user = User.create! :name => 'Admin', :email => 'admin@example.com', :password => 'asdfasdf', :password_confirmation => 'asdfasdf'
+  admin_user.confirmed_at = admin_user.confirmation_sent_at
+  admin_user.save!
 end
+  
+admin_role = Role.find_by_name('Admin')
+if !admin_role
+  admin_role = Role.new
+  admin_role.name = 'Admin'
+  admin_role.save!
+end
+
+admin_user.roles << admin_role  
+admin_user.save!
 
 # Setup tags and related icons
 tags = ([ { :name => 'historical',                    :icon => "http://google-maps-icons.googlecode.com/files/historicalquarter.png" },

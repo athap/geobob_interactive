@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110403053635) do
+ActiveRecord::Schema.define(:version => 20110513151100) do
 
   create_table "access_code_requests", :force => true do |t|
     t.string   "email"
@@ -167,6 +167,8 @@ ActiveRecord::Schema.define(:version => 20110403053635) do
     t.string   "background_image_file_name"
     t.string   "background_image_content_type"
     t.string   "background_image_file_size"
+    t.integer  "width"
+    t.integer  "height"
   end
 
   create_table "roles", :force => true do |t|

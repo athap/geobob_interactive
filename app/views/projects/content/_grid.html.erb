@@ -42,7 +42,7 @@
 </div>
 <div id="author_rightcolumn">
   <div class="content-iPhone">
-    <div id="app-icons-drop" class="connectedSortable" <%= app_background(@project) %>>
+    <div id="app-icons-drop" class="connectedSortable" <%= app_background(@project).html_safe %>>
       <% output_icons(@icons) %>
     </div>
   </div>
