@@ -7,8 +7,8 @@ module ProjectsHelper
   end
   
   def app_background(project, include_style = true)
-    style = "height:#{project.height || 200}px;"
-    style << "width:#{project.width || 200}px;"
+    style = "height:#{project.height || 400}px;"
+    style << "width:#{project.width || 276}px;"
     style << %Q{background-image:url('#{project.background_image.url(:background)}');} if project.background_image
 
     if include_style
@@ -36,8 +36,10 @@ module ProjectsHelper
   end
   
   def calculate_gpsrs_position(fact)
-    height = fact.factable.height/2
-    width = fact.factable.width/2
+    height = fact.factable.height || 400
+    width = fact.factable.width || 276
+    height = height/2
+    width = width/2
     v = fact.vertical_offset || 0
     h = fact.horizontal_offset || 0
     v = height - v
