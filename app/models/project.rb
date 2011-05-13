@@ -86,6 +86,7 @@ class Project < ActiveRecord::Base
   attr_accessor :current_editor
   
   def can_edit?(user)
+    return false if user.blank?
     return true if user.admin?
     self.users.include?(user)
   end
