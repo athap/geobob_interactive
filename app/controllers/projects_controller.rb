@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
                 
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:show, :index]
   before_filter :get_project, :only => [:show, :edit, :destroy, :interface, :details, :content, :build]
   
   layout :choose_layout
