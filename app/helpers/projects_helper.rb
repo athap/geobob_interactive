@@ -6,11 +6,15 @@ module ProjectsHelper
     false
   end
   
-  def app_background(project, include_style = true)
-    style = "height:#{project.height || 400}px;"
-    style << "width:#{project.width || 276}px;"
-    style << %Q{background-image:url('#{project.background_image.url(:background)}');} if project.background_image
-
+  def app_background(project, include_style = true, no_background = false, include_border = false)
+    style = "height:#{project.height || 500}px;"
+    style << "width:#{project.width || 500}px;"
+    if !no_background && project.background_image
+      style << %Q{background-image:url('#{project.background_image.url(:background)}');}
+    end
+    if include_border
+      style << "border:solid 2px #000;"
+    end
     if include_style
       %Q{style="#{style}"}
     else
