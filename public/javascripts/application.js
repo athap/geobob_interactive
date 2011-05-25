@@ -216,9 +216,17 @@ function make_gpsrs_dots_dnd(){
 		drop: function(event, ui){
 			var pos = ui.draggable.position();
 			var width = jQuery('#gpsrs-points-container').width();
-			var height = jQuery('#gpsrs-points-container').height();
+			var height = jQuery('#gpsrs-points-container').height();			
+			var meters_width = parseInt(jQuery('#project_width').val());
+			var meters_height = parseInt(jQuery('#project_height').val());	
+			var vscale = width/meters_height;
+	    var hscale = height/meters_width;	
       var vertical_offset = (height/2) - pos.top;
-      var horizontal_offset = pos.left - (width/2);		
+      var horizontal_offset = pos.left - (width/2);
+			vertical_offset = vertical_offset/vscale;
+			horizontal_offset = horizontal_offset/hscale;
+			vertical_offset = Math.round(vertical_offset);
+			horizontal_offset = Math.round(horizontal_offset);
 			var fact_id = ui.draggable.children('.fact_id').val();
 			var url = '/facts/' + fact_id;
 			jQuery.ajax({

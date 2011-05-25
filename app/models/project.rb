@@ -63,7 +63,8 @@ class Project < ActiveRecord::Base
                     
   has_attached_file :background_image, 
                     :styles => { :phone => "320x480",
-                                 :background => "276x400" },
+                                 :background => "276x400",
+                                 :standard_background => "400x400#" },
                     :default_url => "/images/background_default.jpg"
                     
   aasm_initial_state :new
