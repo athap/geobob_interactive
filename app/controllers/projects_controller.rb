@@ -83,8 +83,7 @@ class ProjectsController < ApplicationController
   
   def export
     @project = Project.find(params[:id])
-    zip_file_path = @project.zip("#{::Rails.root.to_s}/public/projects")
-    send_file zip_file_path, :type => 'application/zip', :disposition => 'attachment', :filename => "#{@project.name}.zip"
+    send_file @project.zip("#{::Rails.root.to_s}/public/projects/#{@project.name}.zip"), :type => 'application/zip'
   end
   
   def create

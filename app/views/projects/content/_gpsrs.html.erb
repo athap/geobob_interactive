@@ -8,6 +8,7 @@
     </div>
     <% f.inputs do %>    
       <%= f.file_field :background_image, { :label => '<strong>App Background: </strong>(Image size should match the size you specify above.)' } %>
+      <p>Enter the size of the play area in meters.</p>
       <%= f.input :width %>
       <%= f.input :height %>
     <% end -%>

@@ -60,6 +60,7 @@ module ProjectsHelper
     
     v = v * vscale
     h = h * hscale
+    
     %Q{style="top:#{v}px;left:#{h}px;position:absolute;"}
   end
   
