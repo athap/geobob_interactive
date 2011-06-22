@@ -3,7 +3,7 @@ class Content < ActiveRecord::Base
   has_many :answers, :dependent => :destroy
   accepts_nested_attributes_for :answers, :reject_if => lambda { |a| a['answer'].blank? }, :allow_destroy => true
   attr_accessible :content, :answers_attributes, :position, :category, :video
-  scope :by_position, :order => "position ASC, id ASC"
+  scope :by_position, :order => "position ASC"
   scope :only_questions, where(:category => 'question')
   scope :only_contents, where(:category => 'content')
   
@@ -53,4 +53,14 @@ class Content < ActiveRecord::Base
     "#{self.video_file_name}"
   end
 
+  def self.fix_position
+    facts = Fact.all
+    facts.each do |fact|
+      contents = fact.contents.by_position
+      contents.each_with_index do |content, index|
+        content.update_attribute(:position, index + 1)
+      end
+    end
+  end
+  
 end
