@@ -99,8 +99,8 @@ class Fact < ActiveRecord::Base
   end
   
   def image
-    #self.photo.url(:thumb)
     "images/#{self.photo_file_name}"
+    self.photo.url(:thumb)    
   end
   
   def category
