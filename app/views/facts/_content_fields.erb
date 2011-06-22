@@ -10,6 +10,11 @@
       <%= f.select :category, Content.categories, {:include_blank => false}, :class => 'content-category-select' %>
     </li>                         
     <li><%= f.text_area :content, :rows => 3, :class => 'fact-content' %></li>
+
+    <div class = "video-container">
+    <%= f.input :video, :label => 'Upload Video', :as => 'file'%>
+    </div>
+
     <li style="<%=content_is_question_css(f.object)%>" class="content-answers-container">
       <a href="#" class="content-answers-toggle">Show Answers</a>
       <div style="display:none;" class="content-answers">

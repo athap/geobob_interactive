@@ -1,3 +1,8 @@
+<div id = "online_users">
+  <h3>Online Users</h3>
+  <%= render :partial => 'projects/online_users', :object => @online_users -%>
+</div>
+
 <div id="project-list" class="text_field"> 
   <h1>CURRENT PROJECTS:</h1>
   <p><%= link_to 'Add New Project', new_project_path %></p>

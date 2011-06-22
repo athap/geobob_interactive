@@ -1,0 +1,6 @@
+Added online users in project controller
+added _online_users 
+change in css for logouts   projects
+
+using paperclip - video for contents
+

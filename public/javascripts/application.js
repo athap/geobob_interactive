@@ -268,12 +268,15 @@ function apply_content_methods(url, update_server){
 
 
 	jQuery('select.content-category-select').live('change', function(){
-	  var select = jQuery(this);
+          var select = jQuery(this);
 		var content_answers_container = select.parents('li').siblings('li.content-answers-container');
+                var video = $(".video-container");
 	  if(select.val() == 'question'){
 	    content_answers_container.show();
+	    video.show();
 	  } else {
 			content_answers_container.hide();
+                        video.hide();
 		}
 	});
 	

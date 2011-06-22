@@ -2,12 +2,15 @@ class Content < ActiveRecord::Base
   belongs_to :fact
   has_many :answers, :dependent => :destroy
   accepts_nested_attributes_for :answers, :reject_if => lambda { |a| a['answer'].blank? }, :allow_destroy => true
-  attr_accessible :content, :answers_attributes, :position, :category
+  attr_accessible :content, :answers_attributes, :position, :category, :video
   scope :by_position, :order => "position ASC, id ASC"
   scope :only_questions, where(:category => 'question')
   scope :only_contents, where(:category => 'content')
   
   before_create :set_position, :set_category
+
+  has_attached_file :video
+                    #,:default_url => "http://www.google.com/mapfiles/marker.png"
   
   def set_position
     last_content = self.fact.contents.by_position.last
@@ -29,6 +32,7 @@ class Content < ActiveRecord::Base
     }
     if self.is_question?
       h[:answers] = self.answers.collect{|a| a.json_hash}
+      h[:video] = video #added by Atul
     end
     h
   end
@@ -45,4 +49,8 @@ class Content < ActiveRecord::Base
     ['content', 'question']
   end
   
+  def video
+    "#{self.video_file_name}"
+  end
+
 end

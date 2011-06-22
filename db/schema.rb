@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110513151100) do
+ActiveRecord::Schema.define(:version => 20110618190731) do
 
   create_table "access_code_requests", :force => true do |t|
     t.string   "email"
@@ -94,6 +94,10 @@ ActiveRecord::Schema.define(:version => 20110513151100) do
     t.datetime "updated_at"
     t.integer  "position"
     t.string   "category"
+    t.string   "video_file_name"
+    t.string   "video_content_type"
+    t.integer  "video_file_size"
+    t.datetime "video_updated_at"
   end
 
   add_index "contents", ["fact_id"], :name => "index_questions_on_fact_id"
@@ -215,7 +219,6 @@ ActiveRecord::Schema.define(:version => 20110513151100) do
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
     t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
-    t.string   "password_salt",                       :default => "", :null => false
     t.string   "reset_password_token"
     t.string   "remember_token"
     t.datetime "remember_created_at"

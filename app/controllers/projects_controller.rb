@@ -7,6 +7,8 @@ class ProjectsController < ApplicationController
                 
   def index
     @user = User.find(params[:user]) if params[:user]
+    #below line added by Atul
+    @online_users = User.online_users
     @project = Project.new
     if @user
       @projects = @user.projects

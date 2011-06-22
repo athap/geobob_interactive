@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   
   default_scope :conditions => { :deleted_at => nil }
 
+  scope :online_users, lambda { where("current_sign_in_at > ?", 15.minutes.ago.to_s(:db)) }
+
   def any_role?(*roles)
     roles.any?{|role| role?(role)}
   end
