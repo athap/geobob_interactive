@@ -2,7 +2,7 @@ development:
   adapter: mysql
   database: geobob_development
   username: root
-  password:
+  password: atul12
   host: localhost
   encoding: utf8
 

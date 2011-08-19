@@ -48,7 +48,7 @@ class Fact < ActiveRecord::Base
   
   def add_default_contents
     1.times do
-      self.contents.build(:category => 'content')
+      narration = self.contents.build(:category => 'content')
     end
   end
   
@@ -141,6 +141,7 @@ class Fact < ActiveRecord::Base
       :vertical_offset => vertical_offset,
       :horizontal_offset => horizontal_offset,
       :questions => self.contents.only_questions.by_position.includes(:answers).collect{|c| c.json_hash},
+      :ISpy => self.contents.only_ispies.by_position.includes(:ispies).collect{|is| is.json_hash},
       :contents => self.contents.only_contents.by_position.collect{|c| c.json_hash} 
     }
   end

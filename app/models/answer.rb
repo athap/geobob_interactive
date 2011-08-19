@@ -10,5 +10,4 @@ class Answer < ActiveRecord::Base
       :incorrect_feedback => self.incorrect_feedback
     }
   end
-  
 end

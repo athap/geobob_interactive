@@ -63,6 +63,14 @@ module ProjectsHelper
     
     %Q{style="top:#{v}px;left:#{h}px;position:absolute;"}
   end
+
+  def show_video(content)
+    if content.is_question?
+      'display:inline;'
+    else
+      'display:none;'
+    end
+  end
   
   def content_is_question_css(content)
     if content.is_question?
@@ -72,4 +80,11 @@ module ProjectsHelper
     end
   end
   
+  def content_has_ispy_css(content)
+    if content.is_ISpy?
+      'display:block;'
+    else
+      'display:none;'
+    end
+  end  
 end

@@ -179,6 +179,7 @@ jQuery(document).ready(function(){
     return false;
   });
 
+  
   jQuery('a.remove_child').live('click', function() {
     var hidden_field = jQuery(this).prev('input[type=hidden]')[0];
     if(hidden_field) {
@@ -267,18 +268,31 @@ function apply_content_methods(url, update_server){
   }).disableSelection();
 
 
-	jQuery('select.content-category-select').live('change', function(){
-          var select = jQuery(this);
-		var content_answers_container = select.parents('li').siblings('li.content-answers-container');
-                var video = $(".video-container");
-	  if(select.val() == 'question'){
-	    content_answers_container.show();
-	    video.show();
-	  } else {
-			content_answers_container.hide();
-                        video.hide();
-		}
-	});
+jQuery('select.content-category-select').live('change', function()
+{
+  var select = jQuery(this);
+  var content_answers_container = select.parents('li').siblings('li.content-answers-container');
+  var video = select.parents('li').siblings('li.file');//$(".video-container");
+  var ispy_container = select.parents('li').siblings('li.content-ispy-container');
+  if(select.val() == 'question')
+  {
+    ispy_container.hide();
+    content_answers_container.show();
+    video.show();
+  } 
+  else if (select.val() == 'ISpy')
+  {
+    content_answers_container.hide();
+    video.hide();
+    ispy_container.show();
+  }
+  else 
+  {
+    ispy_container.hide();
+    content_answers_container.hide();
+    video.hide();
+  }
+});
 	
 	jQuery('.content-answers-toggle').live('click', function(){
 		var link = jQuery(this);

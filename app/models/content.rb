@@ -1,12 +1,20 @@
 class Content < ActiveRecord::Base
   belongs_to :fact
   has_many :answers, :dependent => :destroy
+  has_many :ispies, :dependent => :destroy
+
   accepts_nested_attributes_for :answers, :reject_if => lambda { |a| a['answer'].blank? }, :allow_destroy => true
-  attr_accessible :content, :answers_attributes, :position, :category, :video
+  accepts_nested_attributes_for :ispies, :reject_if => proc { |attrs| attrs['position_x'].blank? || attrs['position_y'].blank? }
+
+  attr_accessible :content, :answers_attributes, :position, :category, :ispies_attributes, :video
+
   scope :by_position, :order => "position ASC"
   scope :only_questions, where(:category => 'question')
-  scope :only_contents, where(:category => 'content')
-  
+  scope :only_ispies, where(:category => 'ISpy')
+  #commented by Atul
+  #scope :only_contents, where(:category => 'content')
+  scope :only_contents, where(:category => 'narration')
+
   before_create :set_position, :set_category
 
   has_attached_file :video
@@ -33,6 +41,8 @@ class Content < ActiveRecord::Base
     if self.is_question?
       h[:answers] = self.answers.collect{|a| a.json_hash}
       h[:video] = video #added by Atul
+    elsif self.is_ISpy?
+      h[:objects] = self.ispies.collect{|is| is.json_hash}
     end
     h
   end
@@ -41,12 +51,28 @@ class Content < ActiveRecord::Base
     self.category == 'question'
   end
   
+  #Commented by Atul
+  #def is_content?
+   # self.category == 'content'
+  #end
+  
+  # Below lines are added by Atul 
   def is_content?
-    self.category == 'content'
+    self.category == 'narration'
   end
   
+
+  def is_ISpy?
+    self.category == 'ISpy'
+  end
+  #commented by Atul
+  #def self.categories
+   # ['content', 'question']
+  #end
+
+  #below lines are added by Atul as now the category content has changed to narration
   def self.categories
-    ['content', 'question']
+    ['narration', 'question', 'ISpy']
   end
   
   def video
