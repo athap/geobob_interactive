@@ -11,9 +11,9 @@ class Content < ActiveRecord::Base
   scope :by_position, :order => "position ASC"
   scope :only_questions, where(:category => 'question')
   scope :only_ispies, where(:category => 'ISpy')
+  scope :only_contents, where(:category => 'content')
   #commented by Atul
-  #scope :only_contents, where(:category => 'content')
-  scope :only_contents, where(:category => 'narration')
+  #scope :only_contents, where(:category => 'narration')
 
   before_create :set_position, :set_category
 
@@ -51,29 +51,31 @@ class Content < ActiveRecord::Base
     self.category == 'question'
   end
   
-  #Commented by Atul
-  #def is_content?
-   # self.category == 'content'
-  #end
-  
-  # Below lines are added by Atul 
+
   def is_content?
-    self.category == 'narration'
+    self.category == 'content'
   end
+
+  #Commented by Atul  
+  # Below lines are added by Atul 
+  #def is_content?
+   # self.category == 'narration'
+  #end
   
 
   def is_ISpy?
     self.category == 'ISpy'
   end
-  #commented by Atul
-  #def self.categories
-   # ['content', 'question']
-  #end
 
-  #below lines are added by Atul as now the category content has changed to narration
   def self.categories
-    ['narration', 'question', 'ISpy']
+    ['content', 'question', 'ISpy']
   end
+
+  #commented by Atul
+  #below lines are added by Atul as now the category content has changed to narration
+  #def self.categories
+   # ['narration', 'question', 'ISpy']
+  #end
   
   def video
     "#{self.video_file_name}"
