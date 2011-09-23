@@ -272,25 +272,25 @@ jQuery('select.content-category-select').live('change', function()
 {
   var select = jQuery(this);
   var content_answers_container = select.parents('li').siblings('li.content-answers-container');
-  var video = select.parents('li').siblings('li.file');//$(".video-container");
+  var data = select.parents('li').siblings('li.file');//$(".video-container");
   var ispy_container = select.parents('li').siblings('li.content-ispy-container');
   if(select.val() == 'question')
   {
     ispy_container.hide();
     content_answers_container.show();
-    video.show();
+    data.show();
   } 
   else if (select.val() == 'ISpy')
   {
     content_answers_container.hide();
-    video.hide();
+    data.show();
     ispy_container.show();
   }
   else 
   {
     ispy_container.hide();
     content_answers_container.hide();
-    video.hide();
+    data.hide();
   }
 });
 	

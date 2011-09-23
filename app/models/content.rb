@@ -89,6 +89,5 @@ class Content < ActiveRecord::Base
         content.update_attribute(:position, index + 1)
       end
     end
-  end
-  
+  end  
 end
