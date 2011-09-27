@@ -43,6 +43,7 @@ class Content < ActiveRecord::Base
       h[:video] = video #added by Atul
     elsif self.is_ISpy?
       h[:objects] = self.ispies.collect{|is| is.json_hash}
+      h[:image] = video
     end
     h
   end
