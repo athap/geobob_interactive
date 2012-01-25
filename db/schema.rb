@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110727022529) do
+ActiveRecord::Schema.define(:version => 20111224204458) do
 
   create_table "access_code_requests", :force => true do |t|
     t.string   "email"
@@ -123,18 +123,6 @@ ActiveRecord::Schema.define(:version => 20110727022529) do
   end
 
   add_index "facts", ["lat", "lng"], :name => "index_facts_on_lat_and_lng"
-
-  create_table "i_spies", :force => true do |t|
-    t.float    "position_x"
-    t.float    "position_y"
-    t.float    "trigger_x"
-    t.float    "trigger_y"
-    t.float    "checker_x"
-    t.float    "checker_y"
-    t.float    "checker_size"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "ispies", :force => true do |t|
     t.float    "position_x"

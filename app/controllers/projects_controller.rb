@@ -2,6 +2,8 @@ class ProjectsController < ApplicationController
                 
   before_filter :authenticate_user!, :except => [:show, :index]
   before_filter :get_project, :only => [:show, :edit, :destroy, :interface, :details, :content, :build]
+  # added by Atul
+  before_filter :verify_user, :only => [:edit, :destroy]
   
   layout :choose_layout
                 
@@ -88,11 +90,12 @@ class ProjectsController < ApplicationController
     send_file @project.zip("#{::Rails.root.to_s}/public/projects/"), :type => 'application/zip'
   end
   
-  def create
-    @project = current_user.projects.build(params[:project])
+  def create  
+    @project = current_user.projects.create(params[:project])
     @project.current_editor = current_user
+    #ProjectRole.create(:user_id => current_user.id, :project_id => @project.id)
     respond_to do |format|
-      if @project.save
+      if @project
         #flash[:notice] = 'Project was successfully created.'
         format.html { redirect_to content_project_path(@project) }
         format.xml  { render :xml => @project, :status => :created, :location => @project }
@@ -142,7 +145,13 @@ class ProjectsController < ApplicationController
   protected
     
     def get_project
-      @project = Project.find(params[:id]) rescue nil
+     @project = Project.find(params[:id]) rescue nil     
+    end
+    
+    def verify_user
+      unless(current_user.admin? || current_user.owner?(params[:id]))
+        redirect_to(projects_url, :notice => 'Access denied. You can edit projects created by you only')
+      end
     end
     
     def choose_layout

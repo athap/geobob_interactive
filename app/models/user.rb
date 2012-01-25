@@ -26,6 +26,10 @@ class User < ActiveRecord::Base
     self.role?('Admin')
   end
   
+  def owner?(project_id)
+    return !!self.projects.find(project_id) rescue nil
+  end
+  
   def destroy
     self.update_attribute(:deleted_at, Time.now.utc)
   end

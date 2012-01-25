@@ -1,6 +1,6 @@
 development:
   adapter: mysql
-  database: geobob_development
+  database: geobob_interactive
   username: root
   password: atul12
   host: localhost
@@ -25,7 +25,7 @@ staging:
 
 production:
   adapter: mysql
-  database: geobob_production
+  database: geobobif_production
   username: bob
   password: djdu248!#$%dfgj^
   host: localhost

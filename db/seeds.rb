@@ -20,8 +20,26 @@ if !admin_role
   admin_role.save!
 end
 
+#added by Atul to create a student role
+student_user = User.find_by_email('dev@idias.com')
+if !student_user
+  student_user = User.create! :name => 'Student', :email => 'dev@idias.com', :password => 'dev@idias.com', :password_confirmation => 'dev@idias.com'
+  student_user.confirmed_at = student_user.confirmation_sent_at
+  student_user.save!
+end
+
+student_role = Role.find_by_name('Student')
+if(!student_role)
+  student_role = Role.new
+  student_role.name = 'Student'
+  student_role.save!
+end
+
 admin_user.roles << admin_role  
 admin_user.save!
+
+student_user.roles << student_role
+student_user.save!
 
 # Setup tags and related icons
 tags = ([ { :name => 'historical',                    :icon => "http://google-maps-icons.googlecode.com/files/historicalquarter.png" },
@@ -58,11 +76,12 @@ tags.each do |tag|
   end
 end
 
+# For Geobob interactive we need only one layout. if you uncomment these then change :sort => to 4 for gpsrs
 project_layouts = ([
-    { :name => '1. List View Layout', :view => 'list', :sort => 1 }, 
-    { :name => '2. Icon Grid Layout', :view => 'grid', :sort => 2 },
-    { :name => '3. Cover Flow Layout', :view => 'flow', :sort => 3 },
-    { :name => '4. GPSrs', :view => 'gpsrs', :sort => 4 }
+    #{ :name => '1. List View Layout', :view => 'list', :sort => 1 }, 
+    #{ :name => '2. Icon Grid Layout', :view => 'grid', :sort => 2 },
+    #{ :name => '3. Cover Flow Layout', :view => 'flow', :sort => 3 },
+    { :name => '1. GPSrs', :view => 'gpsrs', :sort => 1 }
   ])
   
 project_layouts.each do |layout|
