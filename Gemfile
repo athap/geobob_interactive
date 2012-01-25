@@ -20,7 +20,9 @@ gem 'geokit', '1.5.0'
 gem 'rubyzip', '0.9.4'
 gem 'tiny_mce', '0.1.3'
 
-
+if RUBY_VERSION < '1.9'
+  gem "ruby-debug"
+end
 
 group :test, :development, :cucumber do
   gem "rspec-rails", ">=2.0.0"
